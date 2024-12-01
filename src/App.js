@@ -8,6 +8,7 @@ import SignUp from './Pages/SignUp'
 import News from './Pages/News'
 import Events from './Pages/Events'
 import Job from './Pages/JobPortal'
+import Alumnijob from './Pages/Alumnijob'
 import Campus from './Pages/Campus'
 import Alumni from './Pages/Alumni';
 import Verify from './Pages/Verify';
@@ -33,6 +34,7 @@ function App() {
           <Route path='/News' element={<News /> }  ></Route>
           <Route path='/Events' element={<Events /> }  ></Route>
           <Route path='/job' element={<Job /> }  ></Route>
+          <Route path='/alumnijob' element={<Alumnijob /> }  ></Route>
           <Route path='/Campus' element={<Campus /> }  ></Route>
           <Route path='/Alumni' element={<Alumni /> }  ></Route>
     </Routes>  

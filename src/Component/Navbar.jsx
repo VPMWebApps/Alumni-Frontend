@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import { UserCircle2 } from 'lucide-react';  // Ensure lucide-react is installed
-import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
+// import { UserCircle2 } from 'lucide-react';  // Ensure lucide-react is installed
+// import { useSelector } from 'react-redux';
 import DropDownMenu from './DropDownMenu';
 
 function Navbar() {
@@ -12,7 +12,7 @@ function Navbar() {
       <header className='fixed left-0 right-0 top-0 z-10 w-full'>
         <div className="bg-white p-4 flex justify-between items-center">
           <Link to="/">
-            <h1 className="text-xl sm:text-base font-bold text-blue-600">
+            <h1 className="text-xl sm:text-base font-bold text-blue-800">
               VPM R.Z SHAH COLLEGE MULUND (E), MUMBAI
             </h1>
           </Link>
@@ -23,7 +23,8 @@ function Navbar() {
               <Link to="/Events" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">EVENTS</Link>
               <Link to="/Alumni" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI MEMBER</Link>
               <Link to="/Campus" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">CAMPUS LIFE</Link>
-              <Link to="/Job" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">CAREER</Link>
+              <Link to="/Job" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">VPM CAREER</Link>
+              <Link to="/alumnijob" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI JOB</Link>
             </nav>
           </div>
           <div>
@@ -60,7 +61,8 @@ function Navbar() {
               <Link to="/Events" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">EVENTS</Link>
               <Link to="/Alumni" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI MEMBER</Link>
               <Link to="/Campus" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">CAMPUS LIFE</Link>
-              <Link to="/Job" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">CAREER</Link>
+              <Link to="/Job" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">VPM CAREER</Link>
+              <Link to="/alumnijob" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI JOB</Link>
             </nav>
           </div>
         )}
