@@ -16,6 +16,8 @@ import { Toaster } from 'react-hot-toast';
 import Login from './Pages/Login';
 import ForgetPassword from './Component/ForgetPassword';
 import ResetPassword from './Component/ResetPassword';
+import Gurudakshina from './Pages/Gurudakshina';
+import Companieslist from './Pages/Companieslist';
 function App() {
   
   return (
@@ -37,6 +39,8 @@ function App() {
           <Route path='/alumnijob' element={<Alumnijob /> }  ></Route>
           <Route path='/Campus' element={<Campus /> }  ></Route>
           <Route path='/Alumni' element={<Alumni /> }  ></Route>
+          <Route path='/Gurudakshina' element={<Gurudakshina /> }  ></Route>
+          <Route path='/Companieslist' element={<Companieslist /> }  ></Route>
     </Routes>  
     </div>
     <Toaster />

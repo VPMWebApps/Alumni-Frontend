@@ -13,7 +13,7 @@ function Navbar() {
         <div className="bg-white p-4 flex justify-between items-center">
           <Link to="/">
             <h1 className="text-xl sm:text-base font-bold text-blue-800">
-              VPM R.Z SHAH COLLEGE MULUND (E), MUMBAI
+              VPM R.Z SHAH COLLEGE
             </h1>
           </Link>
           
@@ -23,8 +23,10 @@ function Navbar() {
               <Link to="/Events" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">EVENTS</Link>
               <Link to="/Alumni" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI MEMBER</Link>
               <Link to="/Campus" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">CAMPUS LIFE</Link>
-              <Link to="/Job" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">VPM CAREER</Link>
-              <Link to="/alumnijob" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI JOB</Link>
+              <Link to="/Job" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">CAREER@VPM</Link>
+              <Link to="/alumnijob" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI JOB PORTAL</Link>
+              <Link to="/Gurudakshina" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">GURUDAKSHINA</Link>
+              <Link to="/Companieslist" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">LIST OF COMPAINES</Link>
             </nav>
           </div>
           <div>
@@ -61,8 +63,10 @@ function Navbar() {
               <Link to="/Events" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">EVENTS</Link>
               <Link to="/Alumni" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI MEMBER</Link>
               <Link to="/Campus" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">CAMPUS LIFE</Link>
-              <Link to="/Job" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">VPM CAREER</Link>
-              <Link to="/alumnijob" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI JOB</Link>
+              <Link to="/Job" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">CAREER@VPM</Link>
+              <Link to="/alumnijob" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">ALUMNI JOB PORTAL</Link>
+              <Link to="/Gurudakshina" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">GURUDAKSHINA</Link>
+              <Link to="/Companieslist" className="text-gray-600 hover:underline underline-offset-8 decoration-2 decoration-blue-600">LIST OF COMPAINES</Link>
             </nav>
           </div>
         )}
