@@ -18,6 +18,8 @@ import ForgetPassword from './Component/ForgetPassword';
 import ResetPassword from './Component/ResetPassword';
 import Gurudakshina from './Pages/Gurudakshina';
 import Companieslist from './Pages/Companieslist';
+import Placement from './Pages/Placement';
+
 function App() {
   
   return (
@@ -41,6 +43,7 @@ function App() {
           <Route path='/Alumni' element={<Alumni /> }  ></Route>
           <Route path='/Gurudakshina' element={<Gurudakshina /> }  ></Route>
           <Route path='/Companieslist' element={<Companieslist /> }  ></Route>
+          <Route path='/Placement' element={<Placement /> }  ></Route>
     </Routes>  
     </div>
     <Toaster />

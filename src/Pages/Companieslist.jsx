@@ -39,7 +39,7 @@ function Companieslist() {
     <>
     <div className="w-full mx-auto p-6 mt-20">
       <div className="bg-white shadow rounded-lg p-6">
-        <h1 className="text-3xl font-bold text-center mb-6 text-blue-800">MAJOR COMPANIES IN MUMBAI</h1>
+        <h1 className="text-3xl font-bold text-center mb-6 text-blue-800">LIST OF COMPANIES</h1>
         <div className="grid grid-cols-1 gap-6">
           {companies.map((company) => (
             <div

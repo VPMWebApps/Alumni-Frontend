@@ -12,14 +12,14 @@ function JobPortal() {
   return (
     <div className="bg-gray-50 py-12 mt-16">
       {/* Section Heading */}
-      <div className="text-center mb-12">
+      {/* <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-blue-800 underline underline-offset-8">
           Career Resources
         </h1>
         <p className="mt-4 text-lg text-gray-600">
           Explore opportunities and resources to advance your career.
         </p>
-      </div>
+      </div> */}
 
       {/* Job Listings */}
       <div className="max-w-7xl mx-auto mb-12 px-10">
@@ -74,46 +74,10 @@ function JobPortal() {
         </div>
       </div>
 
-      {/* Mentorship */}
-      <div className="max-w-7xl mx-auto mb-12 px-10">
-        <h2 className="text-2xl font-semibold text-gray-700 mb-6">
-          Find a Mentor
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Mentor Profiles */}
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <div className="flex gap-4">
-              <img
-                src="https://images.pexels.com/photos/5212320/pexels-photo-5212320.jpeg?auto=compress&cs=tinysrgb&w=300"
-                alt="image"
-                className="w-24 h-24 rounded-full flex-shrink-0 object-cover object-center"
-              ></img>
-              <h3 className="text-xl font-semibold">John Doe</h3>
-            </div>
-            <p className="mt-2 text-gray-600">Senior Developer at TechCo</p>
-            <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">
-              Contact
-            </button>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <div className="flex gap-4">
-              <img
-                src="https://images.pexels.com/photos/7092613/pexels-photo-7092613.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="image"
-                className="w-24 h-24 rounded-full flex-shrink-0 object-cover object-center"
-              ></img>
-              <h3 className="text-xl font-semibold">Jane Smith</h3>
-            </div>
-            <p className="mt-2 text-gray-600">Product Manager at StartUp</p>
-            <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">
-              Contact
-            </button>
-          </div>
-        </div>
-      </div>
+     
 
       {/* Success Stories */}
-      <div className="max-w-7xl mx-auto">
+      {/* <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl font-semibold text-blue-800 underline underline-offset-8 mb-6 ">
           Alumni Success Stories
         </h2>
@@ -129,7 +93,7 @@ function JobPortal() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

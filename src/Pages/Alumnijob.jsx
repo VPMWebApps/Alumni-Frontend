@@ -40,7 +40,7 @@ function Alumnijob() {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto mt-20 mb-12 px-10">
+      <div className="max-w-7xl mx-auto mt-32 mb-12 px-10">
         <h1 className="text-4xl font-bold text-blue-800 underline underline-offset-8 text-center">
           ALUMNI JOB BOARD
         </h1>
