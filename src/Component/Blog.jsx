@@ -73,7 +73,7 @@ function Blog() {
     <>
       <div className="mx-auto mb-20">
         <h1 className="text-6xl font-bold text-blue-700 text-center mb-8 underline underline-offset-8">
-          ALUMNI EVENTS
+          EVENTS
         </h1>
 
         {/* events list */}

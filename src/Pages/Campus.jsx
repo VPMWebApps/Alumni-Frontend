@@ -4,21 +4,21 @@ function Campus() {
   return (
    <>
    
-   <div className="bg-gray-50 mt-16">
+   <div className="bg-gray-50 mt-16 p-4">
       {/* Hero Section */}
       <div className="relative">
   {/* Image */}
   <img 
     src='https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-    className="w-full h-64 sm:h-80 md:h-screen object-cover"
+    className="w-full h-64 md:h-96 object-cover"
     alt="Campus Life"
   />
   
   {/* Text Content */}
-  <div className='absolute bottom-2 left-2 bg-white px-4 py-3 rounded-lg shadow-2xl shadow-blue-800 sm:bottom-5 sm:left-5 md:bottom-10 md:left-10'>
+  {/* <div className='absolute bottom-2 left-2 bg-white px-4 py-3 rounded-lg shadow-2xl shadow-blue-800 sm:bottom-5 sm:left-5 md:bottom-10 md:left-10'>
     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800">Explore Campus Life</h1>
     <p className="mt-2 sm:mt-3 md:mt-4 text-base sm:text-lg">Experience the vibrant and dynamic life on our campus.</p>
-  </div>
+  </div> */}
 </div>
 
 

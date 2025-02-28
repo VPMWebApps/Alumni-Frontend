@@ -8,6 +8,7 @@ import SignUp from './Pages/SignUp'
 import News from './Pages/News'
 import Events from './Pages/Events'
 import Job from './Pages/JobPortal'
+import Alumnijob from './Pages/Alumnijob'
 import Campus from './Pages/Campus'
 import Alumni from './Pages/Alumni';
 import Verify from './Pages/Verify';
@@ -15,6 +16,10 @@ import { Toaster } from 'react-hot-toast';
 import Login from './Pages/Login';
 import ForgetPassword from './Component/ForgetPassword';
 import ResetPassword from './Component/ResetPassword';
+import Gurudakshina from './Pages/Gurudakshina';
+import Companieslist from './Pages/Companieslist';
+import Placement from './Pages/Placement';
+
 function App() {
   
   return (
@@ -33,8 +38,12 @@ function App() {
           <Route path='/News' element={<News /> }  ></Route>
           <Route path='/Events' element={<Events /> }  ></Route>
           <Route path='/job' element={<Job /> }  ></Route>
+          <Route path='/alumnijob' element={<Alumnijob /> }  ></Route>
           <Route path='/Campus' element={<Campus /> }  ></Route>
           <Route path='/Alumni' element={<Alumni /> }  ></Route>
+          <Route path='/Gurudakshina' element={<Gurudakshina /> }  ></Route>
+          <Route path='/Companieslist' element={<Companieslist /> }  ></Route>
+          <Route path='/Placement' element={<Placement /> }  ></Route>
     </Routes>  
     </div>
     <Toaster />
