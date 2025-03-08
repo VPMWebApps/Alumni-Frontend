@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../server";
 import { useDispatch } from "react-redux";
 import { setUser } from '../store/authSlice.js';
+import { setToken } from "../store/tokenSlice.js";
 
 function Login() {
 
@@ -33,8 +34,12 @@ const handleLogin = async (e) => {
   setLoading(true);
   try {
     const res = await axios.post(`${API_URL}/users/login`, formData, {withCredentials: true});
+    // console.log("Response>>>>>>>>>>>>.",res)
     const user = res.data.data.user;
+    const token = res.data.token;
+    // console.log(">>>>>>>>>>>token",token)
     dispatch(setUser(user)); // Dispatch login action to set user in Redux state
+    dispatch(setToken(token));
     toast.success("Login Successful");
     navigate('/'); // Redirect to home page after successful login
   } catch (error) {

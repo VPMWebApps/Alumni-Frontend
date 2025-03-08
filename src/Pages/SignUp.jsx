@@ -6,6 +6,7 @@ import { API_URL } from '../server.js';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../store/authSlice.js';
 import toast from 'react-hot-toast';
+import { PostUnAuthReq } from '../Services/ApiService.js';
 
 const SignUp = () => {
   
@@ -18,6 +19,7 @@ const SignUp = () => {
     username: "",
     email: "",
     password: "",
+    cpassword: "",
   });
 
   const handleChange = (e) => {
@@ -38,19 +40,25 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
 
+    if (formData.password !== formData.cpassword) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const res = await axios.post(`${API_URL}/users/signup`, formData, { withCredentials: true });
-      const user = res.data.data.user;
+      // Using PostAuthReq for the sign-up API call
+      const res = await PostUnAuthReq('/users/signup', formData);
+      const user = res.data.user;
       dispatch(setUser(user));
       toast.success("SignUp Successful");
       navigate('/verify-email');
     } catch (error) {
-      setError(error.response.data.error.statusCode);
-      toast.error(error.response.data.error.statusCode);
+      setError(error.response?.data?.error?.message || "Signup failed");
+      toast.error("Signup failed, please try again");
     } finally {
       setLoading(false);
     }
-
   }
 
   return (
@@ -113,6 +121,25 @@ const SignUp = () => {
               required
               placeholder="Enter Your Password"
               value={formData.password}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="mb-5">
+            <label
+              htmlFor="cpassword"
+              className="block mb-2 text-sm font-medium text-gray-900 "
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="cpassword"
+              name="cpassword"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              required
+              placeholder="Enter Your Password"
+              value={formData.cpassword}
               onChange={handleChange}
             />
           </div>
