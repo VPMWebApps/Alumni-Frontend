@@ -1,0 +1,726 @@
+import React, { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchUserProfile,
+  createOrUpdateUserProfile,
+  clearUserProfile,
+} from "../../store/user-view/UserInfoSlice";
+import { toast } from "sonner";
+import ProfileImageUpload from "./ProfileImageUpload";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Mail,
+  Linkedin,
+  Building2,
+  Edit2,
+  Save,
+  Briefcase,
+  BookOpen,
+  User,
+  SquareUser,
+  Users,
+} from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ConnectionsList from "./ConnectionsList";
+import { fetchAcceptedConnections } from "../../store/user-view/ConnectionSlice";
+import MyJobApplications from "./Jobs/MyJobApplications";
+// import { fetchMyRegisteredEvents } from "../../store/user-view/UserEventSlice"; // adjust path
+import RegisteredEventsList from "./RegisteredEventsList";
+
+
+
+
+const UserProfile = () => {
+  const dispatch = useDispatch();
+  const { userProfile, isLoading, error } = useSelector((state) => state.userProfile);
+  const currentUser = useSelector((state) => state.auth?.user);
+
+  const [open, setOpen] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState("");
+  const [imageLoadingState, setImageLoadingState] = useState(false);
+  const [showConnections, setShowConnections] = useState(false);
+  const { acceptedConnections } = useSelector((state) => state.connections);
+  const [activeTab, setActiveTab] = useState("info");
+  // const [registeredEvents, setRegisteredEvents] = useState([]);
+  // const [eventsLoading, setEventsLoading] = useState(false);
+
+
+  const { pagination: appPagination } = useSelector((state) => state.applications);
+  const applicationsTotal = appPagination?.total || 0;
+
+  useEffect(() => {
+    Promise.all([
+      dispatch(fetchUserProfile()),
+      dispatch(fetchAcceptedConnections()),
+    ]);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error("Failed to load profile", {
+        description: error,
+      });
+    }
+  }, [error]);
+
+  // Fetch when tab becomes active
+  // ❌ DELETE this entire useEffect from UserProfile.jsx
+  // useEffect(() => {
+  //   if (activeTab === "events") {
+  //     setEventsLoading(true);
+  //     dispatch(fetchMyRegisteredEvents())
+  //       .unwrap()
+  //       .then((data) => {
+  //         setRegisteredEvents(data.events);
+  //         setEventsTotalPages(data.totalPages);
+  //         setEventsTotalCount(data.totalEvents);
+  //       })
+  //       .catch(() => toast.error("Failed to load registered events"))
+  //       .finally(() => setEventsLoading(false));
+  //   }
+  // }, [activeTab]);
+
+  const [formData, setFormData] = useState({
+    jobTitle: "",
+    company: "",
+    industry: "",
+    about: "",
+    linkedin: "",
+  });
+
+  useEffect(() => {
+    console.log("Redux userProfile:", userProfile);
+    console.log("Redux isLoading:", isLoading);
+  }, [userProfile, isLoading]);
+
+
+  /* ================= CLEAR & FETCH PROFILE ================= */
+  // useEffect(() => {
+  //   dispatch(fetchUserProfile());
+  // }, []);
+
+
+
+  /* ================= SYNC FORM ================= */
+  const syncFromProfile = useCallback(() => {
+    if (!userProfile) return;
+
+    setFormData({
+      jobTitle: userProfile.jobTitle || "",
+      company: userProfile.company || "",
+      industry: userProfile.industry || "",
+      about: userProfile.about || "",
+      linkedin: userProfile.linkedin || "",
+    });
+
+    setUploadedImageUrl(userProfile.profilePicture || "");
+  }, [userProfile]);
+
+  useEffect(() => {
+    syncFromProfile();
+  }, [syncFromProfile]);
+
+  /* ================= HANDLERS ================= */
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSave = async () => {
+    if (imageLoadingState) {
+      toast.error("Image upload still in progress", {
+        description: "Please wait until upload completes.",
+      });
+      return;
+    }
+
+    try {
+      const payload = {
+        ...formData,
+        profilePicture: uploadedImageUrl || "",
+      };
+
+      await dispatch(createOrUpdateUserProfile(payload)).unwrap();
+
+      toast.success("Profile updated successfully", {
+        description: "Your changes have been saved.",
+      });
+
+      setOpen(false);
+      setImageFile(null);
+    } catch (err) {
+      const message =
+        err?.message ||
+        err?.response?.data?.message ||
+        "Failed to update profile";
+
+      toast.error("Update failed", {
+        description: message,
+      });
+    }
+  };
+
+
+  useEffect(() => {
+    if (error) {
+      toast.error("Failed to load profile", {
+        description: error,
+      });
+    }
+  }, [error]);
+
+
+  // Wait for auth to exist first
+  if (!currentUser) {
+    return <div className="p-10 text-center">Loading...</div>;
+  }
+
+  // skeleton
+  if (isLoading || !userProfile) {
+    return (
+      <div className="min-h-screen bg-[#F5F6F8] animate-pulse">
+
+        {/* HERO */}
+        <div className="relative bg-[#152A5D] p-10 overflow-hidden">
+          <div className="max-w-6xl mx-auto px-6 pt-5 pb-20">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+
+              <div className="flex items-center gap-6">
+                <div className="w-36 h-36 rounded-full bg-white/20 border-4 border-white/30" />
+                <div className="space-y-4">
+                  <div className="h-10 w-72 bg-white/20 rounded-xl" />
+                  <div className="h-5 w-48 bg-white/15 rounded-lg" />
+                </div>
+              </div>
+
+              <div className="h-10 w-40 bg-[#EBAB09]/60 rounded-xl" />
+            </div>
+          </div>
+        </div>
+
+        {/* MAIN CONTENT */}
+        <div className="max-w-6xl mx-auto px-6 -mt-16 pb-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            {/* LEFT SIDEBAR */}
+
+            <div className="lg:col-span-2 space-y-8">
+
+              {/* Tabs Skeleton */}
+              <div className="bg-white rounded-xl shadow-xl p-4">
+                <div className="flex gap-6">
+                  <div className="h-8 w-24 bg-gray-200 rounded-md" />
+                  <div className="h-8 w-40 bg-gray-200 rounded-md" />
+                </div>
+              </div>
+
+              {/* About Card */}
+              <div className="bg-white rounded-2xl shadow-xl p-6 space-y-4">
+                <div className="h-6 w-32 bg-gray-300 rounded-lg" />
+                <div className="h-4 w-full bg-gray-200 rounded-md" />
+                <div className="h-4 w-4/5 bg-gray-200 rounded-md" />
+              </div>
+
+              {/* Professional Card */}
+              <div className="bg-white rounded-3xl shadow-xl p-8 space-y-8">
+
+                {/* Current Position */}
+                <div className="bg-gray-100 rounded-2xl p-6 flex gap-5">
+                  <div className="w-14 h-14 bg-white rounded-2xl" />
+                  <div className="flex-1 space-y-3">
+                    <div className="h-4 w-32 bg-gray-300 rounded-md" />
+                    <div className="h-5 w-48 bg-gray-200 rounded-md" />
+                    <div className="h-4 w-40 bg-gray-200 rounded-md" />
+                  </div>
+                </div>
+
+                {/* Academic Info */}
+                <div className="bg-gray-100 rounded-2xl p-6 flex gap-5">
+                  <div className="w-14 h-14 bg-white rounded-2xl" />
+                  <div className="flex-1 space-y-3">
+                    <div className="h-4 w-32 bg-gray-300 rounded-md" />
+                    <div className="h-5 w-48 bg-gray-200 rounded-md" />
+                    <div className="h-4 w-40 bg-gray-200 rounded-md" />
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* RIGHT CONTENT */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-xl shadow-xl p-6 space-y-4">
+                <div className="h-6 w-32 bg-gray-200 rounded-lg mx-auto" />
+                <div className="h-4 w-full bg-gray-200 rounded-md" />
+                <div className="h-4 w-4/5 bg-gray-200 rounded-md" />
+              </div>
+
+              <div className="bg-white rounded-2xl shadow-xl p-6">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-gray-100 rounded-2xl p-6 space-y-3">
+                    <div className="w-10 h-10 bg-white rounded-xl mx-auto" />
+                    <div className="h-6 w-12 bg-gray-300 rounded-md mx-auto" />
+                    <div className="h-4 w-20 bg-gray-200 rounded-md mx-auto" />
+                  </div>
+                  <div className="bg-gray-100 rounded-2xl p-6 space-y-3">
+                    <div className="w-10 h-10 bg-white rounded-xl mx-auto" />
+                    <div className="h-6 w-12 bg-gray-300 rounded-md mx-auto" />
+                    <div className="h-4 w-20 bg-gray-200 rounded-md mx-auto" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (showConnections) {
+    return <ConnectionsList onClose={() => setShowConnections(false)} />;
+  }
+
+  const profile = userProfile || {};
+  const user = profile.user || {};
+
+  return (
+    <div className="min-h-screen bg-[#F5F6F8]">
+      {/* ================= HERO ================= */}
+      <div className="relative p-10 bg-[#152A5D] overflow-hidden">
+        {/* Decorative Circles */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 
+                    w-[400px] h-[400px] 
+                    -translate-x-1/2 -translate-y-1/2 
+                    rounded-full 
+                    border-[1px] border-white/5" />
+
+          <div className="absolute top-1/2 left-1/2 
+                    w-[600px] h-[600px] 
+                    -translate-x-1/2 -translate-y-1/2 
+                    rounded-full 
+                    border-[1px] border-white/5" />
+
+          <div className="absolute top-1/2 left-1/2 
+                    w-[900px] h-[900px] 
+                    -translate-x-1/2 -translate-y-1/2 
+                    rounded-full 
+                    border-[1px] border-white/10" />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-6 pt-5 pb-20 z-10">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div className="flex flex-col items-center text-center 
+                md:flex-row md:itemsend md:text-left 
+                gap-6">
+
+              <Avatar className="w-36 h-36 rounded-full border-4 border-white shadow-xl">
+                <AvatarImage
+                  src={profile.profilePicture || undefined}
+                  className="object-cover"
+                />
+                <AvatarFallback className="bg-[#EBAB09] text-[#0F2747] text-7xl font-bold flex items-center justify-center">
+                  {user.fullname
+                    ? user.fullname.charAt(0).toUpperCase()
+                    : "U"}
+                </AvatarFallback>
+              </Avatar>
+
+              <div>
+                <h1 className="text-3xl md:text-5xl font-bold text-white/90">
+                  {user.fullname || "User"}
+                </h1>
+
+                <p className="text-white/70 text-lg mt-2">
+                  {profile.jobTitle || "Add your job title"}
+                  {profile.company && ` at ${profile.company}`}
+                </p>
+              </div>
+
+            </div>
+
+            <Button
+              onClick={() => setOpen(true)}
+              className="bg-[#EBAB09] hover:bg-[#c4962f] cursor-pointer  text-white font-semibold px-6 rounded-xl"
+            >
+              <Edit2 className="h-4 w-4 mr-2" />
+              Edit Profile
+            </Button>
+          </div>
+        </div>
+      </div>
+
+
+      {/* ================= MAIN ================= */}
+      <div className="max-w-6xl mx-auto px-6 -mt-16 pb-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* LEFT SIDEBAR */}
+
+
+          {/* RIGHT CONTENT */}
+          <div className="lg:col-span-2">
+            <Tabs defaultValue="info" onValueChange={setActiveTab}>
+              <TabsList className="bg-white w-full rounded-md p-1 h-14 flex overflow-x-auto sm:overflow-visible">
+
+                <TabsTrigger
+                  value="info"
+                  className="rounded-md cursor-pointer px-3 sm:px-6 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-[#152A5D] data-[state=active]:text-white"
+                >
+                  Info
+                </TabsTrigger>
+
+                <TabsTrigger
+                  value="events"
+                  className="rounded-md cursor-pointer px-3 sm:px-6 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-[#152A5D] data-[state=active]:text-white"
+                >
+                  Registered Events
+                </TabsTrigger>
+
+                <TabsTrigger
+                  value="applications"
+                  className="rounded-md cursor-pointer px-3 sm:px-6 text-xs sm:text-sm whitespace-nowrap relative data-[state=active]:bg-[#152A5D] data-[state=active]:text-white"
+                >
+                  Applications
+
+                  {applicationsTotal > 0 && (
+                    <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] px-1 rounded-full bg-[#EBAB09] text-black text-[9px] sm:text-[10px] font-bold flex items-center justify-center">
+                      {applicationsTotal}
+                    </span>
+                  )}
+                </TabsTrigger>
+
+              </TabsList>
+
+              <TabsContent value="info" className="mt-10 space-y-6">
+                <Card className="rounded-2xl bg-white border-none  shadow-xl">
+                  <CardHeader className="flex flex-row items-center gap-3">
+                    <BookOpen className="h-5 w-5 text-[#D4A437]" />
+                    <CardTitle className="text-lg font-semibold">
+                      About
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent>
+                    <p className="text-gray-600">
+                      {profile.about || "No information added yet."}
+                    </p>
+                  </CardContent>
+                </Card>
+
+                {/* PROFESSIONAL SECTION */}
+                <Card className="rounded-3xl bg-white border-none shadow-xl overflow-hidden">
+                  <CardHeader className="flex flex-row items-center gap-3 pb-4 border-b bg-gradient-to-r from-[#f8fafc] to-white">
+                    <div className="w-10 h-10 rounded-xl text-[#D4A437] flex items-center justify-center">
+                      <Building2 className="h-5 w-5 text-[#D4A437]" />
+                    </div>
+                    <CardTitle className="text-xl font-bold text-[#0F2747]">
+                      Professional Overview
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="space-y-8 pt-8">
+
+                    {/* Current Role */}
+                    <div className="group relative rounded-2xl p-6 bg-gradient-to-br from-[#EEF2F7] to-[#F8FAFC] hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-start gap-5">
+                        <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center">
+                          <Briefcase className="h-6 w-6 text-[#0F2747]" />
+                        </div>
+
+                        <div className="flex-1">
+                          <p className="text-xs uppercase tracking-wider  text-gray-500 font-medium">
+                            Current Position
+                          </p>
+
+                          <h3 className="text-xl font-semibold text-[#0F2747] mt-1">
+                            {profile.jobTitle?.trim() || "Not specified"}
+                          </h3>
+
+                          <p className="text-gray-600 mt-1">
+                            {profile.company?.trim() || "Company not specified"}
+                          </p>
+
+
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Academic Info */}
+                    <div className="group relative rounded-2xl p-6 bg-gradient-to-br from-[#EEF2F7] to-[#F8FAFC] hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-start gap-5">
+                        <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center">
+                          <BookOpen className="h-6 w-6 text-[#0F2747]" />
+                        </div>
+
+                        <div className="flex-1">
+                          <p className="text-xs uppercase tracking-wider text-gray-500 font-medium">
+                            Academic Background
+                          </p>
+
+                          <h3 className="text-xl font-semibold text-[#0F2747] mt-1">
+                            {user.stream || "Stream not specified"}
+                          </h3>
+
+                          <p className="text-gray-600 mt-1">
+                            Batch of {user.batch || "N/A"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </CardContent>
+                </Card>
+
+              </TabsContent>
+
+              {/* // Replace the "events" TabsContent with: */}
+              <TabsContent value="events" className="mt-10">
+                <RegisteredEventsList isActive={activeTab === "events"} />
+              </TabsContent>
+
+
+
+              <TabsContent value="applications" className="mt-10">
+                <MyJobApplications isActive={activeTab === "applications"} />
+              </TabsContent>
+            </Tabs>
+          </div>
+
+          <div className="space-y-6">
+            <Card className="rounded-xl  border-none bg-white shadow-xl">
+              <CardHeader className="items-center">
+                <CardTitle>Contact Info</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 text-sm">
+                <div className="flex items-center text-md gap-3">
+                  <Mail className="h-4 w-4 text-[#D4A437]" />
+                  <span>{user.email || "No email"}</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Linkedin className="h-4 w-4 text-[#D4A437]" />
+                  {profile.linkedin ? (
+                    <a
+                      href={profile.linkedin.startsWith("http")
+                        ? profile.linkedin
+                        : `https://${profile.linkedin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700  hover:underline break-all"
+                    >
+                      {profile.linkedin}
+                    </a>
+                  ) : (
+                    <span className="text-gray-400 italic">
+                      Not posted yet
+                    </span>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden">
+              <CardContent className="p-0">
+                <button
+                  type="button"
+                  onClick={() => setShowConnections(true)}
+                  className="group w-full flex items-center justify-between px-6 py-5 cursor-pointer"
+                >
+
+                  {/* Left Section */}
+                  <div className="flex items-center gap-4">
+
+                    {/* Icon */}
+                    <div className="w-11 h-11 rounded-xl bg-amber-50 group-hover:bg-amber-100 transition-colors flex items-center justify-center shrink-0">
+                      <Users className="h-5 w-5 text-[#EBAB09]" />
+                    </div>
+
+                    {/* Text */}
+                    <div className="flex flex-col text-left">
+                      <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">
+                        Connections
+                      </span>
+
+                      <div className="flex items-end gap-2">
+                        <span className="text-2xl font-bold text-slate-900 leading-none">
+                          {acceptedConnections.length}
+                        </span>
+                        <span className="text-sm text-slate-500 mb-0.5">
+                          total
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Arrow */}
+                  <div className="flex items-center gap-2 text-sm font-semibold text-amber-600">
+                    <span className="opacity-80 group-hover:opacity-100">
+                      View
+                    </span>
+
+                    <svg
+                      className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M2.5 7h9M8 3.5L11.5 7 8 10.5"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                </button>
+              </CardContent>
+            </Card>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ================= EDIT DIALOG ================= */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="sm:max-w-[750px] max-h-[90vh] overflow-y-auto p-0 rounded-2xl border-none shadow-2xl">
+
+          {/* Header */}
+          <div className="bg-gradient-to-r from-[#0F2747] to-[#1d3c7a] px-8 py-6 text-white rounded-t-2xl">
+            <DialogTitle className="text-2xl font-bold tracking-tight">
+              Edit Your Profile
+            </DialogTitle>
+            <p className="text-white/70 text-sm mt-1">
+              Keep your professional details up to date.
+            </p>
+          </div>
+
+          {/* Body */}
+          <div className="px-8 py-8 bg-white space-y-8">
+
+            {/* Profile Image Section */}
+            <div className="flex flex-col items-center space-y-4">
+              <ProfileImageUpload
+                imageFile={imageFile}
+                setImageFile={setImageFile}
+                uploadedImageUrl={uploadedImageUrl}
+                setUploadedImageUrl={setUploadedImageUrl}
+                imageLoadingState={imageLoadingState}
+                setImageLoadingState={setImageLoadingState}
+                userName={user.fullname}
+              />
+              <p className="text-sm text-gray-500">
+                Upload a professional profile picture.
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-gray-200" />
+
+            {/* Professional Info Section */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-[#0F2747]">
+                Professional Information
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Job Title</Label>
+                  <Input
+                    name="jobTitle"
+                    value={formData.jobTitle}
+                    onChange={handleChange}
+                    className="h-11 rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Company</Label>
+                  <Input
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="h-11 rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Industry</Label>
+                  <Input
+                    name="industry"
+                    value={formData.industry}
+                    onChange={handleChange}
+                    className="h-11 rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">LinkedIn Profile URL</Label>
+                  <Input
+                    name="linkedin"
+                    value={formData.linkedin}
+                    onChange={handleChange}
+                    className="h-11 rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* About Section */}
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-[#0F2747]">
+                About You
+              </h3>
+              <Textarea
+                name="about"
+                value={formData.about}
+                onChange={handleChange}
+                rows={5}
+                className="rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+              />
+            </div>
+
+          </div>
+
+          {/* Footer */}
+          <DialogFooter className="px-8 py-6 bg-gray-50  rounded-b-2xl flex justify-between">
+            <Button
+              variant="ghost"
+              onClick={() => setOpen(false)}
+              className="rounded-full hover:bg-transparent hover:outline-2 cursor-pointer hover:border px-6"
+            >
+              Cancel
+            </Button>
+
+            <Button
+              onClick={handleSave}
+              disabled={imageLoadingState}
+              className="bg-yellow-500 hover:bg-[#c4962f] text-white font-semibold px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <Save className="h-4 w-4 mr-2" />
+              Save Changes
+            </Button>
+          </DialogFooter>
+
+        </DialogContent>
+      </Dialog>
+
+    </div>
+  );
+};
+
+export default UserProfile;
