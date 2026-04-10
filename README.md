@@ -38,6 +38,6 @@ Node
 3. pulsating effect. change 3rd option to countries:
   <img width="1436" height="283" alt="image" src="https://github.com/user-attachments/assets/77b90d89-20d8-47ca-a25e-b4e96bc8edd5" />
    
-4. Bad background image
+4. Bad background image. Remove entire "platform" section. Refer columbia portal
   <img width="1875" height="701" alt="image" src="https://github.com/user-attachments/assets/3020cef8-ab71-4b51-a8cb-4d22aaba4361" />
    
