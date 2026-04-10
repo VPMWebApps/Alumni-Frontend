@@ -25,6 +25,8 @@ update readme setup steps with proper versions of
 IDE
 React 
 Node 
+Npm installation steps for windows and linux with screenshots. Screenshots to be added for all steps from scratch that involves even IDE installation.
+IDE installation steps can be added in installation guides repository and linked here.
 
 1. Homepage - grammer
    Alumni  -> rename to Alumni Directory
