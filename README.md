@@ -42,5 +42,7 @@ Node
   <img width="1875" height="701" alt="image" src="https://github.com/user-attachments/assets/3020cef8-ab71-4b51-a8cb-4d22aaba4361" />
 
 5. Home page will be the landing page. Sign in / register button at the top right corner
-6. alumni directory search and jobs section should trigger login  
+6. alumni directory search and jobs section should trigger login , i.e no access to these pages without login.
+7. Volunteer Page - public view , also admin to approve volunteering event. Separate section pls.
+
    
