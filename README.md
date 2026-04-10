@@ -45,4 +45,6 @@ Node
 6. alumni directory search and jobs section should trigger login , i.e no access to these pages without login.
 7. Volunteer Page - public view , also admin to approve volunteering event. Separate section pls.
 
+8. Increase font size of college name, use all CAPS. Increase logo size. Background permanent white.
+9. Navbar menu fix below the logo and college name.
    
