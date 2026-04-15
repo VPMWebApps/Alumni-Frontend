@@ -50,4 +50,7 @@ IDE installation steps can be added in installation guides repository and linked
 8. Increase font size of college name, use all CAPS. Increase logo size. Background permanent white.
 9. Navbar menu fix below the logo and college name.
 10. Footer college Logo very small. Increase size. college name - make it bigger font always.
-11. TRAJAN PRO - THIS ONE IS USED BY COLUMBI
+11. TRAJAN PRO - THIS ONE IS USED BY COLUMBIA
+12.Increase the font size of "instagram" and "linkedin" and "youtube" - both symbol and text should be CLEARLY VISIBLE
+    <img width="1538" height="600" alt="image" src="https://github.com/user-attachments/assets/493c69de-5175-4413-84b5-329513325be3" />
+
