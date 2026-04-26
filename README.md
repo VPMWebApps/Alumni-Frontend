@@ -30,6 +30,8 @@ IDE installation steps can be added in installation guides repository and linked
 
 TODO:
 1. capture profession - drop-down - include enterpreneur / startup / family business / self employed / etc
+
+2.  About us - about the founder
    
 3. Ask for Help from fellow alumni - new section - think about this
 
@@ -50,7 +52,7 @@ TODO:
 
 11. home page - below explore alumni direcotyr - 1000 students have already registerd - register now !   
 
-12. ALUMNI SPOTLIGHT / HALL OF FAME
+12. ALUMNI SPOTLIGHT / HALL OF FAME - for exceptional alumni
 
 12.Increase the font size of "instagram" and "linkedin" and "youtube" - both symbol and text should be CLEARLY VISIBLE
     <img width="1538" height="600" alt="image" src="https://github.com/user-attachments/assets/493c69de-5175-4413-84b5-329513325be3" />
