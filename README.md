@@ -30,20 +30,30 @@ IDE installation steps can be added in installation guides repository and linked
 
 TODO:
 1. capture profession - drop-down - include enterpreneur / startup / family business / self employed / etc
-2. Ask for Help from fellow alumni - new section - think about this
-3. pulsating effect. change 3rd option to countries:
+   
+3. Ask for Help from fellow alumni - new section - think about this
+
+4. pulsating effect. change 3rd option to countries:
   <img width="1436" height="283" alt="image" src="https://github.com/user-attachments/assets/77b90d89-20d8-47ca-a25e-b4e96bc8edd5" />
-4. Gurudakshina
-5. Mentor - vetting and approval - find mentor - verify credentials - QnA on the site ?
-6. Alumni registration verificatoin mechanism - marksheet ? college id ? - brainstorm 
-7. Volunteer Page - public view , also admin to approve volunteering event. Separate section pls.
-8. email broadcasting and whatsapp/arattai broadcasting ? social media integration - cost research ?
-9. Campaign page. registration incentives / referral merchandise .
-10.    
-11.
+
+5. Gurudakshina
+
+6. Mentor - vetting and approval - find mentor - verify credentials - QnA on the site ?
+
+7. Alumni registration verificatoin mechanism - marksheet ? college id ? - brainstorm 
+
+8. Volunteer Page - public view , also admin to approve volunteering event. Separate section pls.
+
+9. email broadcasting and whatsapp/arattai broadcasting ? social media integration - cost research ?
+
+10. Campaign page. registration incentives / referral merchandise .
+
+11.    
+
+12.
+
 12.Increase the font size of "instagram" and "linkedin" and "youtube" - both symbol and text should be CLEARLY VISIBLE
     <img width="1538" height="600" alt="image" src="https://github.com/user-attachments/assets/493c69de-5175-4413-84b5-329513325be3" />
 
 13. while registration capture linkedin url, and if student is alumnus of vpm schools. , country , organisation etc.
     
-
