@@ -58,7 +58,7 @@ const Footer = () => {
         className="relative max-w-7xl mx-auto px-6 py-10 sm:py-12"
       >
         {/* TOP: BRAND + MAP */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="flex justify-between items-center">
           {/* LEFT */}
           <motion.div variants={item}>
             <div className="flex items-center gap-3 mb-4">
@@ -109,7 +109,7 @@ const Footer = () => {
             <div className="rounded-lg overflow-hidden border border-white/20 shadow">
               <iframe
                 src="https://www.google.com/maps?q=VPM%20R.Z.%20Shah%20College&output=embed"
-                width="100%"
+                width="140%"
                 height="160"
                 style={{ border: 0 }}
                 loading="lazy"
