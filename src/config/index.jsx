@@ -141,6 +141,11 @@ export const UserNavItems = [
         label: "About the Founder",
         path: "/user/aboutfounder",
       },
+      {
+        id: "PrincipalMessage",
+        label: "Principle's Message",
+        path: "/user/principle-message",
+      },
     ],
   },
 

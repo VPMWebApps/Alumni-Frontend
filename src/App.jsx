@@ -33,6 +33,7 @@ import { fetchConversations } from './store/user-view/MessageSlice.js'
 import Feedback from './pages/userView/Feedback.jsx'
 import AdminFeedback from './pages/adminView/AdminFeedback.jsx'
 import AboutFounder from './pages/userView/Jobs/AboutFounder.jsx'
+import PrincipalMessage from './pages/userView/PrincipalMessage.jsx'
 
 function App() {
   const { isLoading } = useSelector((state) => state.auth);
@@ -63,13 +64,27 @@ function App() {
       <Routes>
         <Route path="/" element={<CheckAuth />} />
 
-        <Route path="/auth" element={<CheckAuth><Layout /></CheckAuth>}>
+        <Route
+          path="/auth"
+          element={
+            <CheckAuth>
+              <Layout />
+            </CheckAuth>
+          }
+        >
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
         </Route>
 
         {/* admin */}
-        <Route path="/admin" element={<CheckAuth><AdminLayout /></CheckAuth>}>
+        <Route
+          path="/admin"
+          element={
+            <CheckAuth>
+              <AdminLayout />
+            </CheckAuth>
+          }
+        >
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="profile" element={<AdminProfile />} />
           <Route path="directory" element={<Alumni />} />
@@ -81,7 +96,14 @@ function App() {
         </Route>
 
         {/* user */}
-        <Route path="/user" element={<CheckAuth><UserLayout /></CheckAuth>}>
+        <Route
+          path="/user"
+          element={
+            <CheckAuth>
+              <UserLayout />
+            </CheckAuth>
+          }
+        >
           <Route path="events" element={<UserEvents />} />
           <Route path="profile" element={<UserProfile />} />
           <Route path="jobs" element={<UserJobs />} />
@@ -94,6 +116,7 @@ function App() {
           <Route path="messages" element={<MessagingPage />} />
           <Route path="feedback" element={<Feedback />} />
           <Route path="aboutfounder" element={<AboutFounder />} />
+          <Route path="principle-message" element={<PrincipalMessage />} />
         </Route>
 
         {/* misc */}
