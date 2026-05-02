@@ -191,7 +191,7 @@ const Navbar = () => {
           Mobile/Tablet : sticky + shrinks on scroll
       ── */}
       <div
-        className={`bg-white border-b border-gray-100 w-full
+        className={`bg-white border-gray-100 w-full
           md:static
           sticky top-0 z-50 transition-all duration-300
         `}
@@ -200,7 +200,7 @@ const Navbar = () => {
           className={`
             max-w-screen-xl mx-auto flex items-center justify-between
             transition-all duration-300 px-3 sm:px-4 md:px-6
-            md:h-[145px] py-3 sm:h-[100px] md:h-[145px]          `}
+            md:h-[145px] py-3 sm:h-[100px]         `}
         >
           {/* ── LEFT: Logo + Name ── */}
           <Link

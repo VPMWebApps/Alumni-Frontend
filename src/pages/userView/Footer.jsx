@@ -2,36 +2,31 @@ import { Linkedin, Instagram, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import vpmLogo from "../../assets/VpmLogo.png";
+import { Phone, Mail } from "lucide-react";
 
-/* =========================
-   Social Links
-========================= */
 const socials = [
   { icon: Instagram, href: "https://instagram.com" },
   { icon: Linkedin, href: "https://linkedin.com" },
   { icon: Youtube, href: "https://youtube.com" },
 ];
 
-/* =========================
-   Animation Config
-========================= */
 const container = {
   hidden: {},
   show: {
     transition: {
-      delayChildren: 0.4,
-      staggerChildren: 0.2,
+      delayChildren: 0.3,
+      staggerChildren: 0.15,
     },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 25 },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: "easeOut",
     },
   },
@@ -50,10 +45,8 @@ const Footer = () => {
       />
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.12),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.08),transparent_40%)]" />
-
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-white/5" />
       <div className="absolute bottom-0 left-10 w-56 h-56 rounded-full bg-white/[0.04]" />
-
       <div className="absolute inset-0 shadow-[inset_0_80px_120px_rgba(0,0,0,0.35)]" />
 
       {/* CONTENT */}
@@ -61,27 +54,38 @@ const Footer = () => {
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-150px" }}
-        className="relative max-w-7xl mx-auto px-6 py-16 sm:py-20"
+        viewport={{ once: true }}
+        className="relative max-w-7xl mx-auto px-6 py-10 sm:py-12"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10">
-          {/* BRAND */}
-          <motion.div variants={item} className="lg:col-span-2">
-            <div className="flex items-center gap-4 mb-6">
-              <img src={vpmLogo} className="w-28 h-28 object-contain" />
+        {/* TOP: BRAND + MAP */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* LEFT */}
+          <motion.div variants={item}>
+            <div className="flex items-center gap-3 mb-4">
+              <img src={vpmLogo} className="w-20 h-20 object-contain" />
 
               <div>
-                <p className="text-3xl lg:text-3xl font-semibold font-serif tracking-tight">
+                <p
+                  style={{ fontFamily: "Philosopher" }}
+                  className="text-xl sm:text-2xl lg:text-3xl font-semibold font-serif leading-tight"
+                >
                   VPM's R.Z. SHAH COLLEGE
                 </p>
-                <p className="text-xl lg:text-xl font-semibold font-serif tracking-tight">
-                  Alumni Association
+
+                <p
+                  style={{
+                    fontFamily: "Kaushan Script",
+                    letterSpacing: "1px",
+                  }}
+                  className="text-[#F2A20A] text-lg sm:text-xl lg:text-2xl transition-all duration-300"
+                >
+                  alumni
                 </p>
               </div>
             </div>
 
             {/* SOCIAL */}
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               {socials.map(({ icon: Icon, href }, i) => (
                 <motion.a
                   key={i}
@@ -90,7 +94,7 @@ const Footer = () => {
                   rel="noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition"
+                  className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center"
                 >
                   <Icon className="w-4 h-4 text-white" />
                 </motion.a>
@@ -98,57 +102,17 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* CONTACT + QUICK LINKS WRAPPER */}
-          <motion.div
-            variants={item}
-            className="lg:col-span-2 grid grid-cols-2 gap-8"
-          >
-            {/* CONTACT */}
-            <div className="space-y-6">
-              <div>
-                <p className="text-xs uppercase tracking-wider text-white mb-1">
-                  Phone
-                </p>
-                <a className="text-white hover:underline">022-25637313</a>
-              </div>
+          {/* RIGHT MAP */}
+          <motion.div variants={item}>
+            <p className="text-xs uppercase tracking-wider mb-2">Find Us</p>
 
-              <div>
-                <p className="text-xs uppercase tracking-wider text-white mb-1">
-                  Contact Us
-                </p>
-                <a className="text-white hover:underline">
-                  vpmdcol@yahoo.co.in
-                </a>
-              </div>
-            </div>
-
-            {/* QUICK LINKS */}
-            <div className="flex flex-col gap-3">
-              <Link className="text-white/80 hover:text-[#EBAB09] underline">
-                Staff Directory
-              </Link>
-              <Link className="text-white/80 hover:text-[#EBAB09] underline">
-                FAQ
-              </Link>
-              <Link className="text-white/80 hover:text-[#EBAB09] underline">
-                VAA Shop
-              </Link>
-            </div>
-          </motion.div>
-          {/* MAP */}
-          <motion.div variants={item} className="lg:col-span-2">
-            <p className="text-xs uppercase tracking-wider text-white mb-3">
-              Find Us
-            </p>
-
-            <div className="rounded-xl overflow-hidden border border-white/20 shadow-lg">
+            <div className="rounded-lg overflow-hidden border border-white/20 shadow">
               <iframe
                 src="https://www.google.com/maps?q=VPM%20R.Z.%20Shah%20College&output=embed"
                 width="100%"
-                height="180"
+                height="160"
                 style={{ border: 0 }}
                 loading="lazy"
-                className="w-full"
               ></iframe>
             </div>
 
@@ -156,11 +120,43 @@ const Footer = () => {
               href="https://maps.app.goo.gl/W6s5kst64tB7RYiPA"
               target="_blank"
               rel="noreferrer"
-              className="inline-block mt-2 text-sm text-[#EBAB09] hover:underline"
+              className="inline-block mt-1 text-xs text-[#EBAB09] hover:underline"
             >
               View on Google Maps →
             </a>
           </motion.div>
+        </div>
+
+        {/* BOTTOM LINKS */}
+
+        <div className="mt-6 pt-4 border-t border-white/20 flex flex-wrap justify-center gap-3 text-lg text-white/80 text-center items-center">
+          {/* PHONE */}
+          <span className="flex items-center gap-1 hover:text-white cursor-pointer">
+            <Phone className="w-4 h-4" />
+            022-25637313
+          </span>
+
+          <span>|</span>
+
+          {/* EMAIL */}
+          <span className="flex items-center gap-1 hover:text-white cursor-pointer">
+            <Mail className="w-4 h-4" />
+            vpmdcol@yahoo.co.in
+          </span>
+
+          <span>|</span>
+
+          <span className="hover:text-white cursor-pointer">
+            Staff Directory
+          </span>
+
+          <span>|</span>
+
+          <span className="hover:text-white cursor-pointer">VAA Shop</span>
+
+          <span>|</span>
+
+          <span className="hover:text-white cursor-pointer">FAQ</span>
         </div>
       </motion.div>
     </footer>

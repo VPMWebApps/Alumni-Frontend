@@ -20,7 +20,7 @@ const AboutFounder = () => {
         {/* ── BACKGROUND VIDEO ── */}
         <video
           ref={videoRef}
-         className="
+          className="
   absolute top-0 left-0
   w-full h-full
   object-cover
@@ -139,34 +139,7 @@ const AboutFounder = () => {
           {/* GRID */}
           <div className="grid md:grid-cols-2 gap-14">
             {/* SON 1 */}
-            <div className="group bg-white rounded-3xl p-12 border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition duration-500">
-              <div className="flex flex-col items-center text-center">
-                <img
-                  src={son1}
-                  alt="SriRam Kulkarni"
-                  className="w-44 h-44 rounded-full object-cover mb-8 shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
-                />
-
-                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 tracking-wide">
-                  SriRam Kulkarni
-                </h3>
-
-                <p className="text-indigo-500 font-medium text-lg mt-2 tracking-wide">
-                  Vice Chairman
-                </p>
-
-                <div className="w-10 h-[2px] bg-[#8B6B2E] my-4 opacity-60"></div>
-
-                <p className="text-gray-600 mt-2 text-lg leading-relaxed max-w-md">
-                  Driving strategic growth and digital transformation, bringing
-                  a forward-thinking vision that expands the organization’s
-                  reach while aligning with global advancements.
-                </p>
-              </div>
-            </div>
-
-            {/* SON 2 */}
-            <div className="group bg-white rounded-3xl p-12 border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition duration-500">
+            <div className="group bg-white rounded-3xl p-12 border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition duration-500">
               <div className="flex flex-col items-center text-center">
                 <img
                   src={son2}
@@ -188,6 +161,33 @@ const AboutFounder = () => {
                   Focused on operational excellence and sustainability, ensuring
                   that the organization continues to grow while preserving its
                   core values and long-standing legacy.
+                </p>
+              </div>
+            </div>
+
+            {/* SON 2 */}
+            <div className="group bg-white rounded-3xl  p-12 border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition duration-500">
+              <div className="flex flex-col items-center text-center">
+                <img
+                  src={son1}
+                  alt="SriRam Kulkarni"
+                  className="w-44 h-44 rounded-full object-cover mb-8 shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
+                />
+
+                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 tracking-wide">
+                  SriRam Kulkarni
+                </h3>
+
+                <p className="text-indigo-500 font-medium text-lg mt-2 tracking-wide">
+                  Vice Chairman
+                </p>
+
+                <div className="w-10 h-[2px] bg-[#8B6B2E] my-4 opacity-60"></div>
+
+                <p className="text-gray-600 mt-2 text-lg leading-relaxed max-w-md">
+                  Driving strategic growth and digital transformation, bringing
+                  a forward-thinking vision that expands the organization’s
+                  reach while aligning with global advancements.
                 </p>
               </div>
             </div>

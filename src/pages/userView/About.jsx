@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import AiCollegeImage from "../../assets/college_16_9_fixed.png";
-import NBHKulkarniImage from "../../assets/Ai_NBH_KULKARNI.png";
+// import NBHKulkarniImage from "../../assets/Ai_NBH_KULKARNI.png";
+import NBHKulkarniImage from "../../assets/nbh_kulkarniNewImage.jpg";
 import { Link } from "react-router-dom";
 
 /* ─── Google Fonts ─── */
@@ -293,7 +294,7 @@ function FoundingPrincipalCard({ isMobile }) {
   {/* ── LEFT: Text ── */}
       <div
         style={{
-          flex: isMobile ? "none" : "0 0 55%",
+          flex: isMobile ? "none" : "0 0 50%",
           padding: isMobile ? "44px 28px 36px" : "48px 56px",
           display: "flex",
           flexDirection: "column",
