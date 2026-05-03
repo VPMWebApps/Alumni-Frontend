@@ -58,12 +58,16 @@ const Footer = () => {
         className="relative max-w-7xl mx-auto px-6 py-10 sm:py-12"
       >
         {/* TOP: BRAND + MAP */}
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8">
+          {" "}
           {/* LEFT */}
           <motion.div variants={item}>
-            <div className="flex items-center gap-3 mb-4">
-              <img src={vpmLogo} className="w-20 h-20 object-contain" />
-
+            <div className="flex flex-col items-center text-center lg:flex-row lg:items-center lg:text-left gap-3 mb-4">
+              {" "}
+              <img
+                src={vpmLogo}
+                className="w-20 h-20 object-contain mx-auto lg:mx-0"
+              />{" "}
               <div>
                 <p
                   style={{ fontFamily: "Philosopher" }}
@@ -101,7 +105,6 @@ const Footer = () => {
               ))}
             </div>
           </motion.div>
-
           {/* RIGHT MAP */}
           <motion.div variants={item}>
             <p className="text-xs uppercase tracking-wider mb-2">Find Us</p>
