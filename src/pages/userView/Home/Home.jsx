@@ -211,15 +211,19 @@ const Home = () => {
           <div className="max-w-4xl mx-auto text-center">
             {/* TITLE */}
             <h1
-              className={`font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[75px] font-bold mb-3 mt-8 sm:mt-10 md:mt-12 lg:mt-15 leading-tight tracking-tight transition-all duration-700 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+              className={`font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[75px] font-bold mb-3 mt-8 sm:mt-10 md:mt-12 lg:mt-15 leading-tight tracking-tight transition-all duration-700
+  ${heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
             >
-              Connect. Inspire. <br />
-              <span className="text-yellow-400">Succeed Together.</span>
+              <span className="drop-shadow-[0_0_12px_rgba(255,255,255,0.5)]">
+                Connect. Inspire.
+              </span>
+              <br />
+              <span className="text-yellow-400 drop-shadow-[0_0_16px_rgba(255,215,0,0.9)]">
+                Succeed Together.
+              </span>
             </h1>
+
+            {/* <h1 className={font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[75px] font-bold mb-3 mt-8 sm:mt-10 md:mt-12 lg:mt-15 leading-tight tracking-tight transition-all duration-700 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] ${ heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6" }} > Connect. Inspire. <br /> <span className="text-yellow-400 drop-shadow-[0_0_12px_rgba(255,215,0,0.8)]"> Succeed Together. </span> </h1> */}
 
             {/* SUBTEXT */}
             <p
