@@ -39,12 +39,11 @@ import MyJobApplications from "./Jobs/MyJobApplications";
 // import { fetchMyRegisteredEvents } from "../../store/user-view/UserEventSlice"; // adjust path
 import RegisteredEventsList from "./RegisteredEventsList";
 
-
-
-
 const UserProfile = () => {
   const dispatch = useDispatch();
-  const { userProfile, isLoading, error } = useSelector((state) => state.userProfile);
+  const { userProfile, isLoading, error } = useSelector(
+    (state) => state.userProfile,
+  );
   const currentUser = useSelector((state) => state.auth?.user);
 
   const [open, setOpen] = useState(false);
@@ -54,11 +53,13 @@ const UserProfile = () => {
   const [showConnections, setShowConnections] = useState(false);
   const { acceptedConnections } = useSelector((state) => state.connections);
   const [activeTab, setActiveTab] = useState("info");
+  const [errors, setErrors] = useState({});
   // const [registeredEvents, setRegisteredEvents] = useState([]);
   // const [eventsLoading, setEventsLoading] = useState(false);
 
-
-  const { pagination: appPagination } = useSelector((state) => state.applications);
+  const { pagination: appPagination } = useSelector(
+    (state) => state.applications,
+  );
   const applicationsTotal = appPagination?.total || 0;
 
   useEffect(() => {
@@ -106,13 +107,10 @@ const UserProfile = () => {
     console.log("Redux isLoading:", isLoading);
   }, [userProfile, isLoading]);
 
-
   /* ================= CLEAR & FETCH PROFILE ================= */
   // useEffect(() => {
   //   dispatch(fetchUserProfile());
   // }, []);
-
-
 
   /* ================= SYNC FORM ================= */
   const syncFromProfile = useCallback(() => {
@@ -133,13 +131,38 @@ const UserProfile = () => {
     syncFromProfile();
   }, [syncFromProfile]);
 
+  const LIMITS = { jobTitle: 10, company: 10, industry: 10, about: 300 };
+
   /* ================= HANDLERS ================= */
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (LIMITS[name] && value.length > LIMITS[name]) return;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" })); // clear error on typing
+  };
+
+  const linkedInRegex =
+    /^https?:\/\/(www\.)?linkedin\.com\/(in|pub|company|school)\/[a-zA-Z0-9\-_%]+\/?/;
+
+  // ADD this function right after linkedInRegex:
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.jobTitle.trim())
+      newErrors.jobTitle = "Job title is required.";
+    if (!formData.company.trim()) newErrors.company = "Company is required.";
+    if (!formData.industry.trim()) newErrors.industry = "Industry is required.";
+    if (!formData.about.trim()) newErrors.about = "About section is required.";
+    if (formData.linkedin && !linkedInRegex.test(formData.linkedin.trim())) {
+      newErrors.linkedin =
+        "Enter a valid LinkedIn URL (e.g. linkedin.com/in/yourname)";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSave = async () => {
+    if (!validateForm()) return; // ← ADD this line
+
     if (imageLoadingState) {
       toast.error("Image upload still in progress", {
         description: "Please wait until upload completes.",
@@ -173,7 +196,6 @@ const UserProfile = () => {
     }
   };
 
-
   useEffect(() => {
     if (error) {
       toast.error("Failed to load profile", {
@@ -181,7 +203,6 @@ const UserProfile = () => {
       });
     }
   }, [error]);
-
 
   // Wait for auth to exist first
   if (!currentUser) {
@@ -192,12 +213,10 @@ const UserProfile = () => {
   if (isLoading || !userProfile) {
     return (
       <div className="min-h-screen bg-[#F5F6F8] animate-pulse">
-
         {/* HERO */}
         <div className="relative bg-[#152A5D] p-10 overflow-hidden">
           <div className="max-w-6xl mx-auto px-6 pt-5 pb-20">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-
               <div className="flex items-center gap-6">
                 <div className="w-36 h-36 rounded-full bg-white/20 border-4 border-white/30" />
                 <div className="space-y-4">
@@ -214,11 +233,9 @@ const UserProfile = () => {
         {/* MAIN CONTENT */}
         <div className="max-w-6xl mx-auto px-6 -mt-16 pb-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
             {/* LEFT SIDEBAR */}
 
             <div className="lg:col-span-2 space-y-8">
-
               {/* Tabs Skeleton */}
               <div className="bg-white rounded-xl shadow-xl p-4">
                 <div className="flex gap-6">
@@ -236,7 +253,6 @@ const UserProfile = () => {
 
               {/* Professional Card */}
               <div className="bg-white rounded-3xl shadow-xl p-8 space-y-8">
-
                 {/* Current Position */}
                 <div className="bg-gray-100 rounded-2xl p-6 flex gap-5">
                   <div className="w-14 h-14 bg-white rounded-2xl" />
@@ -256,11 +272,8 @@ const UserProfile = () => {
                     <div className="h-4 w-40 bg-gray-200 rounded-md" />
                   </div>
                 </div>
-
               </div>
-
             </div>
-
 
             {/* RIGHT CONTENT */}
             <div className="space-y-6">
@@ -303,40 +316,45 @@ const UserProfile = () => {
       <div className="relative p-10 bg-[#152A5D] overflow-hidden">
         {/* Decorative Circles */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 
+          <div
+            className="absolute top-1/2 left-1/2 
                     w-[400px] h-[400px] 
                     -translate-x-1/2 -translate-y-1/2 
                     rounded-full 
-                    border-[1px] border-white/5" />
+                    border-[1px] border-white/5"
+          />
 
-          <div className="absolute top-1/2 left-1/2 
+          <div
+            className="absolute top-1/2 left-1/2 
                     w-[600px] h-[600px] 
                     -translate-x-1/2 -translate-y-1/2 
                     rounded-full 
-                    border-[1px] border-white/5" />
+                    border-[1px] border-white/5"
+          />
 
-          <div className="absolute top-1/2 left-1/2 
+          <div
+            className="absolute top-1/2 left-1/2 
                     w-[900px] h-[900px] 
                     -translate-x-1/2 -translate-y-1/2 
                     rounded-full 
-                    border-[1px] border-white/10" />
+                    border-[1px] border-white/10"
+          />
         </div>
 
         <div className="relative max-w-6xl mx-auto px-6 pt-5 pb-20 z-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <div className="flex flex-col items-center text-center 
+            <div
+              className="flex flex-col items-center text-center 
                 md:flex-row md:itemsend md:text-left 
-                gap-6">
-
+                gap-6"
+            >
               <Avatar className="w-36 h-36 rounded-full border-4 border-white shadow-xl">
                 <AvatarImage
                   src={profile.profilePicture || undefined}
                   className="object-cover"
                 />
                 <AvatarFallback className="bg-[#EBAB09] text-[#0F2747] text-7xl font-bold flex items-center justify-center">
-                  {user.fullname
-                    ? user.fullname.charAt(0).toUpperCase()
-                    : "U"}
+                  {user.fullname ? user.fullname.charAt(0).toUpperCase() : "U"}
                 </AvatarFallback>
               </Avatar>
 
@@ -350,7 +368,6 @@ const UserProfile = () => {
                   {profile.company && ` at ${profile.company}`}
                 </p>
               </div>
-
             </div>
 
             <Button
@@ -364,18 +381,15 @@ const UserProfile = () => {
         </div>
       </div>
 
-
       {/* ================= MAIN ================= */}
       <div className="max-w-6xl mx-auto px-6 -mt-16 pb-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* LEFT SIDEBAR */}
 
-
           {/* RIGHT CONTENT */}
           <div className="lg:col-span-2">
             <Tabs defaultValue="info" onValueChange={setActiveTab}>
               <TabsList className="bg-white w-full rounded-md p-1 h-14 flex overflow-x-auto sm:overflow-visible">
-
                 <TabsTrigger
                   value="info"
                   className="rounded-md cursor-pointer px-3 sm:px-6 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-[#152A5D] data-[state=active]:text-white"
@@ -395,14 +409,12 @@ const UserProfile = () => {
                   className="rounded-md cursor-pointer px-3 sm:px-6 text-xs sm:text-sm whitespace-nowrap relative data-[state=active]:bg-[#152A5D] data-[state=active]:text-white"
                 >
                   Applications
-
                   {applicationsTotal > 0 && (
                     <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] px-1 rounded-full bg-[#EBAB09] text-black text-[9px] sm:text-[10px] font-bold flex items-center justify-center">
                       {applicationsTotal}
                     </span>
                   )}
                 </TabsTrigger>
-
               </TabsList>
 
               <TabsContent value="info" className="mt-10 space-y-6">
@@ -433,7 +445,6 @@ const UserProfile = () => {
                   </CardHeader>
 
                   <CardContent className="space-y-8 pt-8">
-
                     {/* Current Role */}
                     <div className="group relative rounded-2xl p-6 bg-gradient-to-br from-[#EEF2F7] to-[#F8FAFC] hover:shadow-lg transition-all duration-300">
                       <div className="flex items-start gap-5">
@@ -453,8 +464,6 @@ const UserProfile = () => {
                           <p className="text-gray-600 mt-1">
                             {profile.company?.trim() || "Company not specified"}
                           </p>
-
-
                         </div>
                       </div>
                     </div>
@@ -481,18 +490,14 @@ const UserProfile = () => {
                         </div>
                       </div>
                     </div>
-
                   </CardContent>
                 </Card>
-
               </TabsContent>
 
               {/* // Replace the "events" TabsContent with: */}
               <TabsContent value="events" className="mt-10">
                 <RegisteredEventsList isActive={activeTab === "events"} />
               </TabsContent>
-
-
 
               <TabsContent value="applications" className="mt-10">
                 <MyJobApplications isActive={activeTab === "applications"} />
@@ -515,9 +520,11 @@ const UserProfile = () => {
                   <Linkedin className="h-4 w-4 text-[#D4A437]" />
                   {profile.linkedin ? (
                     <a
-                      href={profile.linkedin.startsWith("http")
-                        ? profile.linkedin
-                        : `https://${profile.linkedin}`}
+                      href={
+                        profile.linkedin.startsWith("http")
+                          ? profile.linkedin
+                          : `https://${profile.linkedin}`
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-700  hover:underline break-all"
@@ -525,9 +532,7 @@ const UserProfile = () => {
                       {profile.linkedin}
                     </a>
                   ) : (
-                    <span className="text-gray-400 italic">
-                      Not posted yet
-                    </span>
+                    <span className="text-gray-400 italic">Not posted yet</span>
                   )}
                 </div>
               </CardContent>
@@ -540,10 +545,8 @@ const UserProfile = () => {
                   onClick={() => setShowConnections(true)}
                   className="group w-full flex items-center justify-between px-6 py-5 cursor-pointer"
                 >
-
                   {/* Left Section */}
                   <div className="flex items-center gap-4">
-
                     {/* Icon */}
                     <div className="w-11 h-11 rounded-xl bg-amber-50 group-hover:bg-amber-100 transition-colors flex items-center justify-center shrink-0">
                       <Users className="h-5 w-5 text-[#EBAB09]" />
@@ -586,19 +589,16 @@ const UserProfile = () => {
                       />
                     </svg>
                   </div>
-
                 </button>
               </CardContent>
             </Card>
           </div>
-
         </div>
       </div>
 
       {/* ================= EDIT DIALOG ================= */}
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[750px] max-h-[90vh] overflow-y-auto p-0 rounded-2xl border-none shadow-2xl">
-
           {/* Header */}
           <div className="bg-gradient-to-r from-[#0F2747] to-[#1d3c7a] px-8 py-6 text-white rounded-t-2xl">
             <DialogTitle className="text-2xl font-bold tracking-tight">
@@ -611,7 +611,6 @@ const UserProfile = () => {
 
           {/* Body */}
           <div className="px-8 py-8 bg-white space-y-8">
-
             {/* Profile Image Section */}
             <div className="flex flex-col items-center space-y-4">
               <ProfileImageUpload
@@ -624,7 +623,7 @@ const UserProfile = () => {
                 userName={user.fullname}
               />
               <p className="text-sm text-gray-500">
-                Upload a professional profile picture.
+                Upload a professional profile picture (JPG or PNG, max 5MB).
               </p>
             </div>
 
@@ -638,44 +637,119 @@ const UserProfile = () => {
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Job Title */}
                 <div className="space-y-2">
                   <Label className="text-sm font-medium">Job Title</Label>
                   <Input
                     name="jobTitle"
                     value={formData.jobTitle}
                     onChange={handleChange}
-                    className="h-11 rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                    placeholder="e.g. Senior Product Manager"
+                    className={`h-11 rounded-xl border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-[#0F2747] ${
+                      errors.jobTitle ? "border-red-500 focus:ring-red-400" : ""
+                    }`}
                   />
+                  <div className="flex justify-between items-center">
+                    {errors.jobTitle ? (
+                      <p className="text-xs text-red-500">{errors.jobTitle}</p>
+                    ) : (
+                      <span />
+                    )}
+                    <p
+                      className={`text-xs ml-auto ${
+                        formData.jobTitle.length >= LIMITS.jobTitle
+                          ? "text-red-500"
+                          : formData.jobTitle.length >= LIMITS.jobTitle * 0.9
+                            ? "text-yellow-500"
+                            : "text-gray-400"
+                      }`}
+                    >
+                      {formData.jobTitle.length} / {LIMITS.jobTitle}
+                    </p>
+                  </div>
                 </div>
 
+                {/* Company */}
                 <div className="space-y-2">
                   <Label className="text-sm font-medium">Company</Label>
                   <Input
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="h-11 rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                    placeholder="e.g. Google, Infosys, Startup Inc."
+                    className={`h-11 rounded-xl border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-[#0F2747] ${
+                      errors.company ? "border-red-500 focus:ring-red-400" : ""
+                    }`}
                   />
+                  <div className="flex justify-between items-center">
+                    {errors.company ? (
+                      <p className="text-xs text-red-500">{errors.company}</p>
+                    ) : (
+                      <span />
+                    )}
+                    <p
+                      className={`text-xs ml-auto ${
+                        formData.company.length >= LIMITS.company
+                          ? "text-red-500"
+                          : formData.company.length >= LIMITS.company * 0.9
+                            ? "text-yellow-500"
+                            : "text-gray-400"
+                      }`}
+                    >
+                      {formData.company.length} / {LIMITS.company}
+                    </p>
+                  </div>
                 </div>
 
+                {/* Industry */}
                 <div className="space-y-2">
                   <Label className="text-sm font-medium">Industry</Label>
                   <Input
                     name="industry"
                     value={formData.industry}
                     onChange={handleChange}
-                    className="h-11 rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                    placeholder="e.g. Finance, Healthcare, Technology"
+                    className={`h-11 rounded-xl border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-[#0F2747] ${
+                      errors.industry ? "border-red-500 focus:ring-red-400" : ""
+                    }`}
                   />
+                  <div className="flex justify-between items-center">
+                    {errors.industry ? (
+                      <p className="text-xs text-red-500">{errors.industry}</p>
+                    ) : (
+                      <span />
+                    )}
+                    <p
+                      className={`text-xs ml-auto ${
+                        formData.industry.length >= LIMITS.industry
+                          ? "text-red-500"
+                          : formData.industry.length >= LIMITS.industry * 0.9
+                            ? "text-yellow-500"
+                            : "text-gray-400"
+                      }`}
+                    >
+                      {formData.industry.length} / {LIMITS.industry}
+                    </p>
+                  </div>
                 </div>
 
+                {/* LinkedIn */}
                 <div className="space-y-2">
-                  <Label className="text-sm font-medium">LinkedIn Profile URL</Label>
+                  <Label className="text-sm font-medium">
+                    LinkedIn Profile URL
+                  </Label>
                   <Input
                     name="linkedin"
                     value={formData.linkedin}
                     onChange={handleChange}
-                    className="h-11 rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                    placeholder="https://linkedin.com/in/yourname"
+                    className={`h-11 rounded-xl border-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-[#0F2747] ${
+                      errors.linkedin ? "border-red-500 focus:ring-red-400" : ""
+                    }`}
                   />
+                  {errors.linkedin && (
+                    <p className="text-xs text-red-500">{errors.linkedin}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -690,14 +764,33 @@ const UserProfile = () => {
                 value={formData.about}
                 onChange={handleChange}
                 rows={5}
-                className="rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747]"
+                className={`rounded-xl border-gray-300 focus:ring-2 focus:ring-[#0F2747] ${
+                  errors.about ? "border-red-500 focus:ring-red-400" : ""
+                }`}
               />
+              <div className="flex justify-between items-center">
+                {errors.about ? (
+                  <p className="text-xs text-red-500">{errors.about}</p>
+                ) : (
+                  <span />
+                )}
+                <p
+                  className={`text-xs ml-auto ${
+                    formData.about.length >= LIMITS.about
+                      ? "text-red-500"
+                      : formData.about.length >= LIMITS.about * 0.9
+                        ? "text-yellow-500"
+                        : "text-gray-400"
+                  }`}
+                >
+                  {formData.about.length} / {LIMITS.about}
+                </p>
+              </div>
             </div>
-
           </div>
 
           {/* Footer */}
-          <DialogFooter className="px-8 py-6 bg-gray-50  rounded-b-2xl flex justify-between">
+          <DialogFooter className="px-8 py-6 bg-gray-50 rounded-b-2xl flex justify-between">
             <Button
               variant="ghost"
               onClick={() => setOpen(false)}
@@ -705,7 +798,6 @@ const UserProfile = () => {
             >
               Cancel
             </Button>
-
             <Button
               onClick={handleSave}
               disabled={imageLoadingState}
@@ -715,10 +807,8 @@ const UserProfile = () => {
               Save Changes
             </Button>
           </DialogFooter>
-
         </DialogContent>
       </Dialog>
-
     </div>
   );
 };

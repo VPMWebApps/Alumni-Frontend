@@ -38,8 +38,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex font-sans bg-white" >
-
+    <div className="min-h-screen flex font-sans bg-white">
       {/* ── Left panel ── */}
       <div
         className="hidden lg:flex lg:w-[47%] flex-col justify-between p-12 relative overflow-hidden"
@@ -55,11 +54,13 @@ const Login = () => {
           style={{ border: `50px solid ${GOLD}` }}
         />
         {/* Subtle gold right border */}
-        <div className="absolute top-0 right-0 w-[3px] h-full" style={{ background: GOLD, opacity: 0.25 }} />
+        <div
+          className="absolute top-0 right-0 w-[3px] h-full"
+          style={{ background: GOLD, opacity: 0.25 }}
+        />
 
         {/* Wordmark */}
         <div className="flex items-center gap-4">
-
           {/* Logo */}
           <div className="w-20 h-20 flex items-center justify-center">
             <img
@@ -71,19 +72,16 @@ const Login = () => {
 
           {/* Text */}
           <div className="flex flex-col leading-tight">
-
             {/* College Name */}
-            <span className="text-2xl md:text-xl font-serif text-amber-300 tracking-widest font-semibold uppercase">
+            <span className="text-3xl md:text-[27px] font-serif text-amber-300 tracking-widest font-semibold uppercase">
               VPM's R.Z. Shah College
             </span>
 
             {/* App Name */}
-            <span className="font-serif font-bold text-white text-4xl md:text-4xl tracking-wide">
+            <span className="font-serif font-bold text-white text-xl md:text-xl tracking-wide">
               Alumni Association
             </span>
-
           </div>
-
         </div>
 
         {/* Center copy */}
@@ -92,7 +90,9 @@ const Login = () => {
             Welcome back
           </p> */}
           <h1 className="font-serif text-4xl xl:text-5xl font-black text-white leading-[1.1] mb-6">
-            Reconnect with your<br />alma mater network.
+            Reconnect with your
+            <br />
+            alma mater network.
           </h1>
           <p className="text-white/50 text-base leading-relaxed max-w-sm">
             Stay connected with fellow alumni.
@@ -106,67 +106,76 @@ const Login = () => {
               { value: "20+", label: "Countries" },
             ].map(({ value, label }) => (
               <div key={label}>
-                <p className="font-serif font-black text-2xl text-white">{value}</p>
-                <p className="text-xs text-white/40 mt-0.5 uppercase tracking-widest">{label}</p>
+                <p className="font-serif font-black text-2xl text-white">
+                  {value}
+                </p>
+                <p className="text-xs text-white/40 mt-0.5 uppercase tracking-widest">
+                  {label}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Bottom quote */}
-        <div className="relative z-10 border-l-2 pl-4" style={{ borderColor: GOLD }}>
+        <div
+          className="relative z-10 border-l-2 pl-4"
+          style={{ borderColor: GOLD }}
+        >
           <p className="text-white/60 text-sm leading-relaxed italic">
-          "College brought us together. Alumni keeps us connected."
-         </p>
+            "College brought us together. Alumni keeps us connected."
+          </p>
           {/* <p className="text-white/30 text-xs mt-2 uppercase tracking-widest">— Class of 2019</p> */}
         </div>
       </div>
 
       {/* ── Right panel ── */}
       <div className="flex-1 flex flex-col min-h-screen lg:justify-center">
-
         {/* Mobile hero header */}
         <div
           className="lg:hidden relative overflow-hidden px-6 pt-14 pb-10"
           style={{ background: NAVY }}
         >
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full opacity-10"
-            style={{ border: `50px solid ${GOLD}` }} />
-          <div className="absolute -top-12 -left-12 w-44 h-44 rounded-full opacity-[0.07]"
-            style={{ border: `35px solid ${GOLD}` }} />
-          <div className="absolute bottom-0 left- 0 right-0 h-[2px]" style={{ background: GOLD, opacity: 0.3 }} />
-
-          <div className="relative z-10 flex items-center gap-3 mb-8">
-
+          <div
+            className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full opacity-10"
+            style={{ border: `50px solid ${GOLD}` }}
+          />
+          <div
+            className="absolute -top-12 -left-12 w-44 h-44 rounded-full opacity-[0.07]"
+            style={{ border: `35px solid ${GOLD}` }}
+          />
+          <div
+            className="absolute bottom-0 left- 0 right-0 h-[2px]"
+            style={{ background: GOLD, opacity: 0.3 }}
+          />
+          <div className="relative z-10 flex flex-col items-center text-center gap-3 mb-8">
             {/* Logo */}
-            <div className="w-10 h-10  flex items-center justify-center">
+            <div className="flex justify-center">
               <img
                 src={vpmLogo}
                 alt="VPM Logo"
-                className="w-full h-full object-contain"
+                className="w-28 h-28 sm:w-24 sm:h-24 object-contain"
               />
             </div>
 
             {/* Text */}
-            <div className="flex flex-col leading-tight">
-               <span className="text-[14px] font-serif text-amber-300 tracking-wider uppercase">
+            <div className="flex flex-col leading-tight items-center">
+              <span className="text-[20px] sm:text-[16px] font-serif text-amber-300 tracking-wider uppercase">
                 VPM's R.Z. Shah College
               </span>
-              <span className="font-serif font-bold text-white text-2xl tracking-wide">
+
+              <span className="font-serif font-bold text-white text-xl sm:text-2xl tracking-wide">
                 Alumni Association
               </span>
-
-             
             </div>
-
           </div>
-
           <div className="relative z-10">
             {/* <p className="text-[10px] font-bold uppercase tracking-[0.3em] mb-2" style={{ color: GOLD }}>
               Welcome back
             </p> */}
             <h1 className="font-serif text-2xl font-black text-white leading-tight mb-2">
-              Reconnect with your <br/>Alma mater network
+              Reconnect with your <br />
+              Alma mater network
             </h1>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Stay connected with fellow alumni .
@@ -174,10 +183,18 @@ const Login = () => {
           </div>
 
           <div className="relative z-10 flex items-center gap-8 mt-7 pt-5 border-t border-white/10">
-            {[{ value: "12K+", label: "Alumni" }, { value: "400+", label: "Companies" }, { value: "80+", label: "Countries" }].map(({ value, label }) => (
+            {[
+              { value: "12K+", label: "Alumni" },
+              { value: "400+", label: "Companies" },
+              { value: "80+", label: "Countries" },
+            ].map(({ value, label }) => (
               <div key={label}>
-                <p className="font-serif font-black text-lg text-white">{value}</p>
-                <p className="text-[10px] text-white/40 uppercase tracking-widest">{label}</p>
+                <p className="font-serif font-black text-lg text-white">
+                  {value}
+                </p>
+                <p className="text-[10px] text-white/40 uppercase tracking-widest">
+                  {label}
+                </p>
               </div>
             ))}
           </div>
@@ -186,33 +203,44 @@ const Login = () => {
         {/* Form area */}
         <div className="flex-1 flex flex-col justify-center px-5 sm:px-8 lg:px-16 xl:px-24 py-8 lg:py-12">
           <div className="maxwsm w-full mxauto lg:mx-0">
-
             {/* Desktop heading */}
-              <div className="hidden lg:block mb-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: GOLD }}>
-                  Sign in
-                </p>
-                <h2 className="font-serif text-3xl font-black mb-1" style={{ color: NAVY }}>
-                  Welcome back
-                </h2>
-              </div>
+            <div className="hidden lg:block mb-8">
+              <p
+                className="text-xs font-semibold uppercase tracking-[0.2em] mb-3"
+                style={{ color: GOLD }}
+              >
+                Sign in
+              </p>
+              <h2
+                className="font-serif text-3xl font-black mb-1"
+                style={{ color: NAVY }}
+              >
+                Welcome back
+              </h2>
+            </div>
 
             {/* Mobile heading */}
             <div className="lg:hidden mb-5 mt-1">
-              <h2 className="font-serif text-2xl font-black" style={{ color: NAVY }}>Sign in</h2>
+              <h2
+                className="font-serif text-2xl font-black"
+                style={{ color: NAVY }}
+              >
+                Sign in
+              </h2>
             </div>
 
             <p className="text-sm text-gray-400 mb-6">
               Don't have an account?{" "}
-              <Link to="/auth/register"
+              <Link
+                to="/auth/register"
                 className="font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity"
-                style={{ color: NAVY }}>
+                style={{ color: NAVY }}
+              >
                 Register here
               </Link>
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-
               {/* Email */}
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5 text-gray-500">
@@ -221,7 +249,10 @@ const Login = () => {
                 <div className="relative">
                   <Mail className="absolute left-3.5  top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
                   <input
-                    type="email" name="email" value={loginData.email} onChange={handleChange}
+                    type="email"
+                    name="email"
+                    value={loginData.email}
+                    onChange={handleChange}
                     placeholder="you@example.com"
                     className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-gray-200 bg-gray-100 text-sm
                 text-gray-900 placeholder-gray-400 outline-none transition
@@ -236,8 +267,10 @@ const Login = () => {
                   <label className="block text-xs font-semibold uppercase tracking-widest text-gray-500">
                     Password
                   </label>
-                  <Link to="/auth/forgot-password"
-                    className="text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2 transition-colors">
+                  <Link
+                    to="/auth/forgot-password"
+                    className="text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2 transition-colors"
+                  >
                     Forgot password?
                   </Link>
                 </div>
@@ -245,32 +278,46 @@ const Login = () => {
                   <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
                   <input
                     type={showPassword ? "text" : "password"}
-                    name="password" value={loginData.password} onChange={handleChange}
+                    name="password"
+                    value={loginData.password}
+                    onChange={handleChange}
                     placeholder="Enter your password"
                     className="w-full pl-10 pr-10 py-3.5 rounded-xl border border-gray-200 bg-gray-100 text-sm
                 text-gray-800 placeholder-gray-400 outline-none transition
                 focus:border-gray-200 focus:ring-2 focus:ring-gray-400"
                   />
-                  <button type="button" onClick={() => setShowPassword((v) => !v)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors">
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((v) => !v)}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors"
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
                   </button>
                 </div>
               </div>
 
               {/* Submit */}
-              <button type="submit" disabled={isLoading}
+              <button
+                type="submit"
+                disabled={isLoading}
                 className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold
             transition-all duration-200 hover:opacity-90 active:scale-[0.98] mt-2
             disabled:opacity-60 disabled:cursor-not-allowed"
-                style={{ background: NAVY, color: "white" }}>
+                style={{ background: NAVY, color: "white" }}
+              >
                 {isLoading ? (
                   <>
                     <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
                     Signing in…
                   </>
                 ) : (
-                  <>Sign in <ArrowRight className="h-4 w-4" /></>
+                  <>
+                    Sign in <ArrowRight className="h-4 w-4" />
+                  </>
                 )}
               </button>
             </form>
@@ -282,9 +329,14 @@ const Login = () => {
 
             <p className="text-xs text-gray-400 text-center leading-relaxed">
               By signing in you agree to our{" "}
-              <span className="underline underline-offset-2 cursor-pointer hover:text-gray-600 transition-colors">Terms of Service</span>
-              {" "}and{" "}
-              <span className="underline underline-offset-2 cursor-pointer hover:text-gray-600 transition-colors">Privacy Policy</span>.
+              <span className="underline underline-offset-2 cursor-pointer hover:text-gray-600 transition-colors">
+                Terms of Service
+              </span>{" "}
+              and{" "}
+              <span className="underline underline-offset-2 cursor-pointer hover:text-gray-600 transition-colors">
+                Privacy Policy
+              </span>
+              .
             </p>
           </div>
         </div>
