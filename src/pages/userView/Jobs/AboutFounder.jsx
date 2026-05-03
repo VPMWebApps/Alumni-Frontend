@@ -93,7 +93,7 @@ const AboutFounder = () => {
                 Founder & Chairman Emeritus
               </p>
               <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
-                Late.Shri N. B. H. Kulkarni
+                Late Shri N. B. H. Kulkarni
               </h1>
               <p className="text-sm sm:text-lg md:text-xl text-gray-200 font-medium">
                 The Man Who Nurtured Indo–Israeli Ties
