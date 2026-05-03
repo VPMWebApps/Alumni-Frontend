@@ -351,7 +351,7 @@ function FoundingPrincipalCard({ isMobile }) {
             marginBottom: 6,
           }}
         >
-          Late.Shri N. B. H. Kulkarni
+          Late Shri N. B. H. Kulkarni
         </h2>
 
         <p
