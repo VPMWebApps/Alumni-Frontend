@@ -478,7 +478,7 @@ function FoundingPrincipalCard({ isMobile }) {
               e.currentTarget.style.gap = "10px";
             }}
           >
-            <span>Read more about him</span>
+            <span>Read more</span>
             <svg
               width="15"
               height="15"

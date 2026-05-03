@@ -90,7 +90,7 @@ const AboutFounder = () => {
             {/* LEFT: Text */}
             <div className="text-white space-y-3 sm:space-y-4 md:space-y-6 order-2 md:order-1">
               <p className="uppercase tracking-widest text-[10px] sm:text-xs md:text-sm text-gray-300">
-                Founder & Visionary
+                Founder & Chairman Emeritus
               </p>
               <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
                 Late.Shri N. B. H. Kulkarni
