@@ -17,83 +17,9 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../../api/axiosInstance.js";
 
-const stats = [
-  { icon: Users, value: "50K+", label: "Alumni Worldwide" },
-  { icon: Calendar, value: "200+", label: "Events Yearly" },
-  { icon: Award, value: "95%", label: "Career Success" },
-];
 
-const news = [
-  {
-    id: 1,
-    title: "Alumni Association Launches New Mentorship Program",
-    excerpt:
-      "Connect with industry leaders for personalized career guidance and professional development.",
-    category: "Programs",
-    date: "Jan 15, 2024",
-    image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Record-Breaking Fundraiser Raises $5M for Scholarships",
-    excerpt:
-      "Thanks to generous alumni contributions, more students than ever will receive financial support.",
-    category: "Giving",
-    date: "Jan 10, 2024",
-    image:
-      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Class of 2013 Celebrates 10-Year Reunion",
-    excerpt:
-      "Over 300 alumni returned to campus for a memorable weekend of reconnection and celebration.",
-    category: "Reunions",
-    date: "Jan 5, 2024",
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop",
-  },
-];
 
-const galleryImages = [
-  {
-    id: 1,
-    src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800",
-    title: "Alumni Meetup",
-  },
-  {
-    id: 2,
-    src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
-    title: "Campus Event",
-  },
-  {
-    id: 3,
-    src: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800",
-    title: "Networking Night",
-  },
-  {
-    id: 4,
-    src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800",
-    title: "Guest Lecture",
-  },
-  {
-    id: 5,
-    src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800",
-    title: "Annual Gathering",
-  },
-  {
-    id: 6,
-    src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&auto=format&fit=crop",
-    title: "Workshop",
-  },
-];
 
-const socials = [
-  { icon: Instagram, color: "hover:bg-[#E4405F]" },
-  { icon: Linkedin, color: "hover:bg-[#0A66C2]" },
-  { icon: Youtube, color: "hover:bg-[#FF0000]" },
-];
 
 const useIntersection = (
   threshold = 0.12,
@@ -126,11 +52,11 @@ const useIntersection = (
 const Home = () => {
   const [heroRef, heroVisible] = useIntersection(0.1, "0px");
   const [eventsRef, eventsVisible] = useIntersection(0.12, "-10% 0px -5% 0px");
-  const [newsRef, newsVisible] = useIntersection(0.12, "-10% 0px -5% 0px");
-  const [donationRef, donationVisible] = useIntersection(
-    0.12,
-    "-10% 0px -5% 0px",
-  );
+  // const [newsRef, newsVisible] = useIntersection(0.12, "-10% 0px -5% 0px");
+  // const [donationRef, donationVisible] = useIntersection(
+  //   0.12,
+  //   "-10% 0px -5% 0px",
+  // );
   const [careerRef, careerVisible] = useIntersection(0.12, "-10% 0px -5% 0px");
   const [socialRef, socialVisible] = useIntersection(0.12, "-10% 0px -5% 0px");
 
@@ -164,26 +90,26 @@ const Home = () => {
   const sideEvents = homeEvents.slice(1, 3);
   // ────────────────────────────────────────────────────────────────────────
 
-  const galleryRef = useRef(null);
-  const [galleryVisible, setGalleryVisible] = useState(false);
+  // const galleryRef = useRef(null);
+  // const [galleryVisible, setGalleryVisible] = useState(false);
 
-  useEffect(() => {
-    const el = galleryRef.current;
-    if (!el) return;
+  // useEffect(() => {
+  //   const el = galleryRef.current;
+  //   if (!el) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setGalleryVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.12, rootMargin: "-10% 0px -5% 0px" },
-    );
+  //   // const observer = new IntersectionObserver(
+  //   //   ([entry]) => {
+  //   //     if (entry.isIntersecting) {
+  //   //       setGalleryVisible(true);
+  //   //       observer.disconnect();
+  //   //     }
+  //   //   },
+  //   //   { threshold: 0.12, rootMargin: "-10% 0px -5% 0px" },
+  //   // );
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  //   observer.observe(el);
+  //   return () => observer.disconnect();
+  // }, []);
 
   return (
     <div>
@@ -227,11 +153,10 @@ const Home = () => {
 
             {/* SUBTEXT */}
             <p
-              className={`text-sm sm:text-base md:text-lg text-white/80 mb-8 sm:mb-10 max-w-2xl mx-auto transition-all duration-700 delay-100 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+              className={`text-sm sm:text-base md:text-lg text-white/80 mb-8 sm:mb-10 max-w-2xl mx-auto transition-all duration-700 delay-100 ${heroVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+                }`}
             >
               Join our thriving community of graduates making an impact
               worldwide.
@@ -239,11 +164,10 @@ const Home = () => {
 
             {/* BUTTON */}
             <div
-              className={`flex justify-center mb-10 sm:mb-14 transition-all duration-700 delay-200 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+              className={`flex justify-center mb-10 sm:mb-14 transition-all duration-700 delay-200 ${heroVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+                }`}
             >
               <Link
                 to="/user/community"
@@ -280,11 +204,10 @@ const Home = () => {
       <section id="events" ref={eventsRef} className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div
-            className={`flex flex-col md:flex-row md:items-end md:justify-between mb-14 transition-all duration-700 ${
-              eventsVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`flex flex-col md:flex-row md:items-end md:justify-between mb-14 transition-all duration-700 ${eventsVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
+              }`}
           >
             <div>
               <span className="text-[#EBAB09] font-semibold text-sm uppercase tracking-wider">
@@ -316,11 +239,10 @@ const Home = () => {
               {/* FEATURED EVENT */}
               {featuredEvent && featuredEvent._id && (
                 <div
-                  className={`lg:row-span-2 relative rounded-3xl overflow-hidden shadow-xl transition-all duration-700 ease-out ${
-                    eventsVisible
-                      ? "opacity-100 translate-x-0"
-                      : "opacity-0 -translate-x-10"
-                  }`}
+                  className={`lg:row-span-2 relative rounded-3xl overflow-hidden shadow-xl transition-all duration-700 ease-out ${eventsVisible
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 -translate-x-10"
+                    }`}
                   style={{ transitionDelay: "100ms" }}
                 >
                   <img
@@ -374,11 +296,10 @@ const Home = () => {
                   event._id && (
                     <div
                       key={event._id}
-                      className={`bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 ${
-                        eventsVisible
-                          ? "opacity-100 translate-x-0"
-                          : "opacity-0 translate-x-8"
-                      }`}
+                      className={`bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 ${eventsVisible
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 translate-x-8"
+                        }`}
                       style={{ transitionDelay: `${200 + index * 150}ms` }}
                     >
                       <div className="flex flex-col sm:flex-row">
@@ -434,11 +355,10 @@ const Home = () => {
       {/* CAREER SECTION */}
       <section ref={careerRef} className="py-16 mt5 bgwhite">
         <div
-          className={`max-w-6xl mx-auto px-6 text-center mb-10 transition-all duration-700 ${
-            careerVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-          }`}
+          className={`max-w-6xl mx-auto px-6 text-center mb-10 transition-all duration-700 ${careerVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
+            }`}
         >
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#142A5D]">
             Unlock Your Career Potential
@@ -452,19 +372,17 @@ const Home = () => {
 
         <div className="max-w-6xl mx-auto px-6">
           <div
-            className={`border border-neutral-300 rounded-lg p-8 bg-white grid grid-cols-1 md:grid-cols-2 gap-10 items-center transition-all duration-700 ${
-              careerVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`border border-neutral-300 rounded-lg p-8 bg-white grid grid-cols-1 md:grid-cols-2 gap-10 items-center transition-all duration-700 ${careerVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}
             style={{ transitionDelay: "150ms" }}
           >
             <div
-              className={`w-full h-full transition-all duration-700 ${
-                careerVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-8"
-              }`}
+              className={`w-full h-full transition-all duration-700 ${careerVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+                }`}
               style={{ transitionDelay: "250ms" }}
             >
               <img
@@ -476,11 +394,10 @@ const Home = () => {
             </div>
 
             <div
-              className={`transition-all duration-700 ${
-                careerVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-8"
-              }`}
+              className={`transition-all duration-700 ${careerVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-8"
+                }`}
               style={{ transitionDelay: "350ms" }}
             >
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-neutral-900">
@@ -503,6 +420,7 @@ const Home = () => {
       </section>
 
       {/* SOCIAL MEDIA SECTION */}
+      {/* SOCIAL MEDIA SECTION */}
       <section
         ref={socialRef}
         className="py-28 bg-white relative overflow-hidden"
@@ -518,11 +436,8 @@ const Home = () => {
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div
-            className={`text-center mb-16 transition-all duration-700 ${
-              socialVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`text-center mb-16 transition-all duration-700 ${socialVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             <span className="text-[#EBAB09] font-semibold text-sm uppercase tracking-widest">
               Stay Connected
@@ -531,39 +446,41 @@ const Home = () => {
               Follow Our Community
             </h2>
             <p className="text-slate-500 mt-3 max-w-xl mx-auto text-base md:text-lg">
-              Join thousands of alumni across our social channels — share
-              moments, celebrate wins, and never miss an update.
+              Join thousands of alumni across our social channels — share moments,
+              celebrate wins, and never miss an update.
             </p>
           </div>
 
           <div
-            className={`grid grid-cols-12 gap-4 transition-all duration-700 ${
-              socialVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`grid grid-cols-12 gap-4 transition-all duration-700 ${socialVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
             style={{ transitionDelay: "200ms" }}
           >
             <style>{`
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    @keyframes marquee-reverse {
-      0% { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
-    }
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    .marquee-track { display: flex; width: max-content; }
-    .marquee-track-anim { animation: marquee 18s linear infinite; }
-    .marquee-track-rev { animation: marquee-reverse 18s linear infinite; }
-    .marquee-track:hover, .marquee-track-anim:hover, .marquee-track-rev:hover {
-      animation-play-state: paused;
-    }
-  `}</style>
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .marquee-track { display: flex; width: max-content; }
+        .marquee-track-anim { animation: marquee 18s linear infinite; }
+        .marquee-track:hover, .marquee-track-anim:hover {
+          animation-play-state: paused;
+        }
+        @keyframes fb-float {
+          0%, 100% { transform: translateY(0px) rotate(-6deg); }
+          50% { transform: translateY(-8px) rotate(-6deg); }
+        }
+        @keyframes yt-scan {
+          0% { top: 0%; opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { top: 100%; opacity: 0; }
+        }
+      `}</style>
 
             {/* INSTAGRAM */}
             <a
@@ -588,9 +505,7 @@ const Home = () => {
                 <div className="flex items-center justify-between">
                   <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 flex items-center gap-2">
                     <Instagram className="w-4 h-4 text-white" />
-                    <span className="text-white text-sm font-semibold">
-                      Instagram
-                    </span>
+                    <span className="text-white text-sm font-semibold">Instagram</span>
                   </div>
                   <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/40 transition-colors">
                     <ArrowRight className="w-4 h-4 text-white -rotate-45" />
@@ -602,7 +517,7 @@ const Home = () => {
                     Campus life, alumni spotlights & behind-the-scenes moments.
                   </p>
                   <div className="text-white/60 text-sm font-medium">
-                    @alumniconnect
+                    @vpm.rz.shah.official
                   </div>
                 </div>
               </div>
@@ -618,8 +533,7 @@ const Home = () => {
                 className="group relative rounded-3xl overflow-hidden p-8 hover:-translate-y-1 hover:shadow-[0_25px_60px_-10px_rgba(10,102,194,0.6)] transition-all duration-500"
                 style={{
                   minHeight: "170px",
-                  background:
-                    "linear-gradient(135deg, #0A66C2 0%, #0952A5 40%, #063E85 100%)",
+                  background: "linear-gradient(135deg, #0A66C2 0%, #0952A5 40%, #063E85 100%)",
                 }}
               >
                 {[...Array(4)].map((_, i) => (
@@ -640,38 +554,32 @@ const Home = () => {
                 <div
                   className="absolute -top-10 -left-10 w-52 h-52 rounded-full blur-3xl"
                   style={{
-                    background:
-                      "radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%)",
+                    background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%)",
                     animation: "pulse 2.5s ease-in-out infinite",
                   }}
                 />
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                   style={{
-                    background:
-                      "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%)",
+                    background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%)",
                     animation: "shimmer 2s linear infinite",
                   }}
                 />
                 <div className="absolute right-0 top-0 bottom-0 w-64 opacity-[0.07]">
                   <div
                     className="w-full h-full bg-white"
-                    style={{
-                      clipPath: "polygon(35% 0%, 100% 0%, 100% 100%, 0% 100%)",
-                    }}
+                    style={{ clipPath: "polygon(35% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
                   />
                 </div>
                 <div
                   className="absolute inset-0 opacity-[0.06]"
                   style={{
-                    backgroundImage:
-                      "radial-gradient(circle, #fff 1px, transparent 1px)",
+                    backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
                     backgroundSize: "22px 22px",
                   }}
                 />
 
                 <div className="relative z-10 flex flex-col gap-4">
-                  {/* Top row */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="relative flex items-center justify-center w-14 h-14">
@@ -681,22 +589,15 @@ const Home = () => {
                         />
                         <span
                           className="absolute inset-[-4px] rounded-xl bg-white/15 animate-ping"
-                          style={{
-                            animationDuration: "1.8s",
-                            animationDelay: "0.3s",
-                          }}
+                          style={{ animationDuration: "1.8s", animationDelay: "0.3s" }}
                         />
                         <div className="relative w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.4)]">
                           <Linkedin className="w-6 h-6 text-[#0A66C2]" />
                         </div>
                       </div>
                       <div>
-                        <p className="text-white font-extrabold text-xl tracking-tight leading-none">
-                          LinkedIn
-                        </p>
-                        <p className="text-white/50 text-xs tracking-[0.15em] uppercase mt-1">
-                          Alumni Network
-                        </p>
+                        <p className="text-white font-extrabold text-xl tracking-tight leading-none">LinkedIn</p>
+                        <p className="text-white/50 text-xs tracking-[0.15em] uppercase mt-1">Alumni Network</p>
                       </div>
                     </div>
                     <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-300">
@@ -704,19 +605,11 @@ const Home = () => {
                     </div>
                   </div>
 
-                  {/* Marquee — single row of professional topics */}
                   <div className="overflow-hidden rounded-xl">
                     <div className="marquee-track marquee-track-anim">
                       {[...Array(2)].map((_, di) => (
                         <div key={di} className="flex gap-2 pr-2">
-                          {[
-                            "💼 Job Openings",
-                            "📈 Career Growth",
-                            "🤝 Referrals",
-                            "🏢 Industry News",
-                            "🎯 Skill Building",
-                            "🌐 Networking",
-                          ].map((item) => (
+                          {["💼 Job Openings", "📈 Career Growth", "🤝 Referrals", "🏢 Industry News", "🎯 Skill Building", "🌐 Networking"].map((item) => (
                             <span
                               key={item}
                               className="bg-white/10 border border-white/20 backdrop-blur-sm text-white/90 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap"
@@ -729,7 +622,6 @@ const Home = () => {
                     </div>
                   </div>
 
-                  {/* Live pill */}
                   <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 w-fit">
                     <span className="relative flex h-2.5 w-2.5">
                       <span
@@ -738,52 +630,96 @@ const Home = () => {
                       />
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_6px_2px_rgba(52,211,153,0.6)]" />
                     </span>
-                    <span className="text-white/90 text-xs font-semibold">
-                      Active community
-                    </span>
+                    <span className="text-white/90 text-xs font-semibold">Active community</span>
                   </div>
                 </div>
               </a>
 
-              {/* X and YouTube */}
+              {/* FACEBOOK + YOUTUBE row */}
               <div className="grid grid-cols-2 gap-4 flex-1">
-                {/* X / TWITTER */}
+
+                {/* FACEBOOK */}
                 <a
-                  href="https://twitter.com"
+                  href="https://facebook.com/YOUR_PAGE_LINK"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative rounded-3xl overflow-hidden bg-[#0F1419] p-6 flex flex-col hover:-translate-y-0.5 hover:shadow-2xl transition-all duration-300"
+                  className="group relative rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-1 hover:shadow-[0_25px_60px_-10px_rgba(24,119,242,0.7)] transition-all duration-500"
+                  style={{ minHeight: "220px", background: "#1877F2" }}
                 >
+                  {/* Big watermark "f" */}
                   <div
-                    className="absolute inset-0 opacity-5"
+                    className="absolute -bottom-6 right-6 text-[180px] font-black leading-none select-none pointer-events-none transition-all duration-500 group-hover:opacity-100"
                     style={{
-                      backgroundImage:
-                        "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-                      backgroundSize: "24px 24px",
+                      color: "rgba(255,255,255,0.18)",
+                      fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                      letterSpacing: "-8px",
+                    }}
+                  >
+                    f
+                  </div>
+                  {/* Hover glow orb */}
+                  <div
+                    className="absolute -top-10 -left-10 w-52 h-52 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{
+                      background: "radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)",
+                      filter: "blur(20px)",
                     }}
                   />
-                  <div className="relative z-10 flex flex-col h-full gap-3">
-                    <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                        <svg
-                          className="w-5 h-5 text-white fill-current"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.262 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
-                        </svg>
+
+
+                  {/* Subtle top gradient shine */}
+                  <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+
+                  {/* Hover shimmer */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.07) 50%, transparent 70%)",
+                      animation: "shimmer 2s linear infinite",
+                    }}
+                  />
+
+                  <div className="relative z-10 p-7 flex flex-col justify-between h-full" style={{ minHeight: "220px" }}>
+                    {/* Header */}
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        {/* Official Facebook "f" badge */}
+                        <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-lg flex-shrink-0">
+                          <svg viewBox="0 0 36 36" className="w-6 h-6" fill="#1877F2">
+                            <path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z" fill="#1877F2" />
+                            <path d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z" fill="white" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-white font-bold text-lg leading-tight">Facebook</p>
+                          <p className="text-white/60 text-xs mt-0.5">Follow our page</p>
+                        </div>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-white/60 -rotate-45 transition-colors" />
+                      <div className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white/20 transition-colors flex-shrink-0">
+                        <ArrowRight className="w-3.5 h-3.5 text-white -rotate-45" />
+                      </div>
                     </div>
 
-                    {/* ✅ Single static line replacing the marquee */}
-                    <p className="text-white/50 text-sm leading-relaxed flex-1 flex items-center">
-                      Real-time updates, alumni threads & trending campus
-                      conversations.
-                    </p>
-
-                    <p className="text-white/30 text-xs">
-                      Live updates & community threads.
-                    </p>
+                    {/* Bottom info */}
+                    <div className="mt-auto pt-4">
+                      <p className="text-white/80 text-sm leading-relaxed mb-4">
+                        Events, announcements & alumni highlights from our community.
+                      </p>
+                      {/* Reaction row */}
+                      <div className="flex items-center gap-2">
+                        <div className="flex -space-x-1">
+                          {["👍", "❤️", "🎉"].map((emoji, i) => (
+                            <span
+                              key={i}
+                              className="w-6 h-6 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-xs"
+                            >
+                              {emoji}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="text-white/60 text-xs">Alumni are reacting</span>
+                      </div>
+                    </div>
                   </div>
                 </a>
 
@@ -793,68 +729,84 @@ const Home = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative rounded-3xl overflow-hidden cursor-pointer"
+                  style={{ minHeight: "220px", background: "#0f0f0f" }}
                 >
-                  <img
-                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&auto=format&fit=crop"
-                    alt="YouTube"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/70 group-hover:bg-black/55 transition-colors" />
+                  {/* Red bottom glow */}
                   <div
-                    className="relative z-10 p-6 flex flex-col h-full"
-                    style={{ minHeight: "180px" }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <Youtube className="w-7 h-5 text-[#FF0000]" />
-                      <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-white/70 -rotate-45 transition-colors" />
+                    className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-48 h-24 rounded-full pointer-events-none"
+                    style={{
+                      background: "radial-gradient(ellipse, rgba(255,0,0,0.4) 0%, transparent 70%)",
+                      animation: "pulse 3s ease-in-out infinite",
+                      filter: "blur(16px)",
+                    }}
+                  />
+
+                  {/* Scan line animation */}
+                  <div
+                    className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent pointer-events-none"
+                    style={{ animation: "yt-scan 4s linear infinite" }}
+                  />
+
+                  {/* Subtle grid */}
+                  <div
+                    className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                    style={{
+                      backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+                      backgroundSize: "30px 30px",
+                    }}
+                  />
+
+                  {/* Hover shimmer */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%)",
+                      animation: "shimmer 2s linear infinite",
+                    }}
+                  />
+
+                  <div className="relative z-10 p-7 flex flex-col justify-between h-full" style={{ minHeight: "220px" }}>
+                    {/* Header */}
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        {/* Official YouTube logo pill */}
+                        <div className="flex items-center gap-1.5 bg-[#FF0000] rounded-lg px-3 py-2 shadow-[0_0_16px_rgba(255,0,0,0.5)]">
+                          {/* YT play icon */}
+                          <svg viewBox="0 0 90 63" className="h-4 w-auto" fill="white">
+                            <path d="M88 9.8A11.3 11.3 0 0 0 80.2 2C73.2 0 45 0 45 0S16.8 0 9.8 2A11.3 11.3 0 0 0 2 9.8C0 16.8 0 31.5 0 31.5s0 14.7 2 21.7A11.3 11.3 0 0 0 9.8 61C16.8 63 45 63 45 63s28.2 0 35.2-2A11.3 11.3 0 0 0 88 53.2C90 46.2 90 31.5 90 31.5S90 16.8 88 9.8z" />
+                            <path d="M36 45L59.3 31.5 36 18z" fill="#FF0000" />
+                          </svg>
+                          <span className="text-white font-bold text-sm tracking-tight">YouTube</span>
+                        </div>
+                      </div>
+                      <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-red-500/60 group-hover:bg-red-500/10 transition-all flex-shrink-0">
+                        <ArrowRight className="w-3.5 h-3.5 text-white/50 group-hover:text-white -rotate-45 transition-colors" />
+                      </div>
                     </div>
 
-                    <div className="mt-auto pt-3">
-                      <div className="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-red-500/30">
-                        <svg
-                          className="w-4 h-4 text-white fill-current ml-0.5"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
+                    {/* Channel identity */}
+                    <div className="mt-auto pt-4">
+                      <p className="text-white/70 text-sm leading-relaxed mb-4">
+                        Event recaps, convocations, cultural fests & campus films.
+                      </p>
+                      {/* Subscribe CTA style */}
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 bg-white rounded-full px-4 py-1.5 group-hover:bg-red-500 transition-colors duration-300">
+                          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current text-[#FF0000] group-hover:text-white transition-colors" >
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                          <span className="text-[#0f0f0f] group-hover:text-white text-xs font-bold transition-colors">Subscribe</span>
+                        </div>
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+                        </span>
+                        <span className="text-white/40 text-xs">@vpmstudio7604</span>
                       </div>
                     </div>
                   </div>
                 </a>
-              </div>
-            </div>
-          </div>
 
-          {/* Bottom strip */}
-          <div
-            className={`mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-slate-100 transition-all duration-700 ${
-              socialVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
-            style={{ transitionDelay: "500ms" }}
-          >
-            <p className="text-slate-400 text-sm">
-              Tag us with{" "}
-              <span className="text-[#142A5D] font-bold">#AlumniConnect</span>{" "}
-              to get featured
-            </p>
-            <div className="flex items-center gap-2">
-              {socials.map(({ icon: Icon, color }, i) => (
-                <div
-                  key={i}
-                  className={`w-8 h-8 rounded-full bg-slate-100 ${color} group flex items-center justify-center transition-colors cursor-pointer`}
-                >
-                  <Icon className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />
-                </div>
-              ))}
-              <div className="w-8 h-8 rounded-full bg-slate-100 hover:bg-black group flex items-center justify-center transition-colors cursor-pointer">
-                <svg
-                  className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.262 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
-                </svg>
               </div>
             </div>
           </div>

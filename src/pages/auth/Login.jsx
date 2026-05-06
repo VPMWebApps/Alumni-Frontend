@@ -60,9 +60,9 @@ const Login = () => {
         />
 
         {/* Wordmark */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col items-center text-center">
           {/* Logo */}
-          <div className="w-20 h-20 flex items-center justify-center">
+          <div className="w-24 h-24 md:w-28 md:h-28 flex items-center justify-center mb-3">
             <img
               src={vpmLogo}
               alt="VPM Logo"
@@ -70,20 +70,16 @@ const Login = () => {
             />
           </div>
 
-          {/* Text */}
-          <div className="flex flex-col leading-tight">
-            {/* College Name */}
-            <span className="text-3xl md:text-[27px] font-serif text-amber-300 tracking-widest font-semibold uppercase">
-              VPM's R.Z. Shah College
-            </span>
+          {/* College Name */}
+          <span className="text-2xl md:text-[30px] font-serif text-amber-300 tracking-wider font-semibold uppercase leading-tight">
+            VPM's R.Z. Shah College
+          </span>
 
-            {/* App Name */}
-            <span className="font-serif font-bold text-white text-xl md:text-xl tracking-wide">
-              Alumni Association
-            </span>
-          </div>
+          {/* Alumni Association */}
+          <span className="font-serif font-bold text-white text-lg md:text-xl tracking-wide mt-1">
+            Alumni Association
+          </span>
         </div>
-
         {/* Center copy */}
         <div className="relative z-10">
           {/* <p className="text-xs font-semibold uppercase tracking-[0.25em] mb-4" style={{ color: GOLD }}>

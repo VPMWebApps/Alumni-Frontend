@@ -6,13 +6,7 @@ import indoIsraelVD from "../../../assets/vid_flag.mp4";
 import { useRef, useEffect } from "react";
 
 const articles = [
-  {
-    tag: "Diplomacy",
-    title: "NBH Kulkarni and the Early Foundations of Indo-Israeli Relations",
-    excerpt:
-      "An insight into how early diplomatic efforts helped shape India–Israel ties and laid the groundwork for long-term cooperation.",
-    href: "https://www.csp.indica.in/nbh-kulkarni-the-man-who-nurtured-indo-israeli-ties-from-its-infancy/",
-  },
+
   {
     tag: "Economy",
     title: "India–Israel Business Synergies and Strategic Partnerships",
@@ -21,6 +15,14 @@ const articles = [
     href: "https://www.gatewayhouse.in/india-israel-business-synergies/",
     // ⚠️ fixed link (removed #_ednref13)
   },
+  {
+    tag: "Diplomacy",
+    title: "NBH Kulkarni and the Early Foundations of Indo-Israeli Relations",
+    excerpt:
+      "An insight into how early diplomatic efforts helped shape India–Israel ties and laid the groundwork for long-term cooperation.",
+    href: "https://www.csp.indica.in/nbh-kulkarni-the-man-who-nurtured-indo-israeli-ties-from-its-infancy/",
+  },
+
   {
     tag: "Industry",
     title: "Technochem Group: Industrial Growth and Global Collaboration",
@@ -47,9 +49,9 @@ const AboutFounder = () => {
   }, []);
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full  bg-white">
       {/* ================= HERO / FOUNDER ================= */}
-      <section className="relative min-h-[85vh] md:min-h-[90vh] overflow-visible">
+      <section className="relative min-h-[58vh] sm:min-h-[65vh] md:min-h-[90vh] overflow-visible">
         {/* ── BACKGROUND VIDEO ── */}
         <video
           ref={videoRef}
@@ -63,7 +65,7 @@ const AboutFounder = () => {
 
         {/* ── OVERLAYS ── */}
         <div className="absolute inset-0 bg-black/65 md:hidden" />
-        <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-black/75 via-black/45 to-transparent" />
+        <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-black/40 via-black/45 to-transparent" />
 
         {/* ── BOTTOM FADE into white ── */}
         <div className="absolute bottom-0 w-full h-32 sm:h-40 md:h-56 bg-gradient-to-t from-white to-transparent z-10" />
@@ -72,8 +74,8 @@ const AboutFounder = () => {
             Extra bottom padding (pb-36 mobile / pb-44 md) ensures the text
             is never hidden behind the overlapping cards.
         ── */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-16 pb-36 sm:pb-40 md:pb-44 md:pt-0 md:min-h-[80vh] flex flex-col justify-center">
-          <div className="flex flex-col md:grid md:grid-cols-2 md:items-center gap-6 md:gap-10">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-10 pt-16 pb-40 sm:pb-52 md:pb-44 md:pt-0 md:min-h-[80vh] flex flex-col justify-center">
+          <div className="flex flex-col md:grid md:mt-20 md:grid-cols-2 md:items-center gap-6 md:gap-10">
             {/* RIGHT: Portrait */}
             <div className="flex justify-center md:justify-end order-1 md:order-2">
               <img
@@ -89,20 +91,27 @@ const AboutFounder = () => {
 
             {/* LEFT: Text */}
             <div className="text-white space-y-3 sm:space-y-4 md:space-y-6 order-2 md:order-1">
-              <p className="uppercase tracking-widest text-[10px] sm:text-xs md:text-sm text-gray-300">
+              <p className="uppercase tracking-widest text-[10px] sm:text-xs md:text-sm text-white">
                 Founder & Chairman Emeritus
               </p>
               <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
                 Late Shri N. B. H. Kulkarni
               </h1>
-              <p className="text-sm sm:text-lg md:text-xl text-gray-200 font-medium">
+              <p className="text-sm sm:text-lg md:text-xl text-white font-medium">
                 The Man Who Nurtured Indo–Israeli Ties
               </p>
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed max-w-lg">
+              <p className="text-xs sm:text-sm md:text-lg  text-white leading-relaxed max-w-lg">
                 A pioneering force in building early diplomatic and industrial
                 bridges between India and Israel, shaping collaborations that
                 continue to influence innovation, agriculture, and technology
                 partnerships today.
+
+                <br />
+        
+                <br />
+
+                Explore the featured articles below to learn more about his remarkable
+                journey, contributions, and lasting global impact.
               </p>
             </div>
           </div>
@@ -168,7 +177,7 @@ const AboutFounder = () => {
           sm      (2-col cards ~160px tall) → need ~80px + gap  → h-24
           lg      (4-col cards ~155px tall) → need ~78px + gap  → h-20
       ── */}
-      <div className="h-28 sm:h-24 lg:h-20" />
+      <div className="h-44 sm:h-36 lg:h-20" />
 
       {/* ================= SONS ================= */}
       <section className="pb-20 md:pb-32 mt-4 md:mt-20 px-4 sm:px-6">

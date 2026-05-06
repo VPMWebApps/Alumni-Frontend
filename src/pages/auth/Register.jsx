@@ -192,26 +192,30 @@ const Register = () => {
         />
 
         {/* Wordmark */}
-        <div className="flex items-center gap-4">
-          <div className="w-20 h-20 flex items-center justify-center">
+        {/* Wordmark */}
+        <div className="flex flex-col items-center text-center">
+          {/* Logo */}
+          <div className="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center mb-3">
             <img
               src={vpmLogo}
               alt="VPM Logo"
               className="w-full h-full object-contain drop-shadow-lg"
             />
           </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-sm md:text-[28px] font-serif text-amber-300 tracking-widest font-semibold uppercase">
-              VPM's R.Z. Shah College
-            </span>
-            <span className="font-serif font-bold text-white text-2xl md:text-xl tracking-wide">
-              Alumni Association
-            </span>
-          </div>
+
+          {/* College Name */}
+          <span className="text-2xl md:text-[30px] font-serif text-amber-300 tracking-wider font-semibold uppercase leading-tight">
+            VPM's R.Z. Shah College
+          </span>
+
+          {/* Alumni Association */}
+          <span className="font-serif font-bold text-white text-lg md:text-xl tracking-wide mt-1">
+            Alumni Association
+          </span>
         </div>
 
         {/* Center copy */}
-        <div className="relative z-10 mt-15">
+        <div className="relative z-10 mt-13">
           <p
             className="text-xs font-semibold uppercase tracking-[0.25em] mb-4"
             style={{ color: GOLD }}
@@ -223,10 +227,6 @@ const Register = () => {
             <br />
             starts here.
           </h1>
-          <p className="text-white/50 text-base leading-relaxed max-w-sm">
-            Create your alumni profile and become part of a thriving community
-            of graduates making a difference.
-          </p>
 
           {/* Steps */}
           <div className="mt-10 space-y-4">
@@ -442,11 +442,10 @@ const Register = () => {
                         {/* BookOpen icon positioned like other fields */}
                         <BookOpen className="absolute left-3.5 h-4 w-4 text-gray-400 pointer-events-none" />
                         <span
-                          className={`ml-7 ${
-                            registerData.stream
+                          className={`ml-7 ${registerData.stream
                               ? "text-gray-900"
                               : "text-gray-400"
-                          }`}
+                            }`}
                         >
                           {registerData.stream || "Select stream"}
                         </span>
