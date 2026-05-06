@@ -425,7 +425,6 @@ const Home = () => {
       </section>
 
       {/* SOCIAL MEDIA SECTION */}
-      {/* SOCIAL MEDIA SECTION */}
       <section
         ref={socialRef}
         className="py-28 bg-white relative overflow-hidden"
@@ -641,15 +640,14 @@ const Home = () => {
               </a>
 
               {/* FACEBOOK + YOUTUBE row */}
-              <div className="grid grid-cols-2 gap-4 flex-1">
-
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
                 {/* FACEBOOK */}
                 <a
                   href="https://facebook.com/YOUR_PAGE_LINK"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-1 hover:shadow-[0_25px_60px_-10px_rgba(24,119,242,0.7)] transition-all duration-500"
-                  style={{ minHeight: "220px", background: "#1877F2" }}
+                 className="group relative rounded-3xl overflow-hidden cursor-pointer"
+style={{ minHeight: "220px", background: "#1877F2" }}
                 >
                   {/* Big watermark "f" */}
                   <div
@@ -684,7 +682,7 @@ const Home = () => {
                     }}
                   />
 
-                  <div className="relative z-10 p-7 flex flex-col justify-between h-full" style={{ minHeight: "220px" }}>
+<div className="relative z-10 p-5 sm:p-7 flex flex-col justify-between h-full" style={{ minHeight: "180px" }}>
                     {/* Header */}
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
@@ -733,9 +731,8 @@ const Home = () => {
                   href="https://youtube.com/@vpmstudio7604?si=Ze2UN13Wp6YHTDf2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative rounded-3xl overflow-hidden cursor-pointer"
-                  style={{ minHeight: "220px", background: "#0f0f0f" }}
-                >
+                  className="group relative rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-1 hover:shadow-[0_25px_60px_-10px_rgba(255,0,0,0.4)] transition-all duration-500"
+style={{ minHeight: "180px", background: "#0f0f0f" }}                >
                   {/* Red bottom glow */}
                   <div
                     className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-48 h-24 rounded-full pointer-events-none"
@@ -770,8 +767,7 @@ const Home = () => {
                     }}
                   />
 
-                  <div className="relative z-10 p-7 flex flex-col justify-between h-full" style={{ minHeight: "220px" }}>
-                    {/* Header */}
+                  <div className="relative z-10 p-5 sm:p-7 flex flex-col justify-between h-full" style={{ minHeight: "180px" }}>                    {/* Header */}
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
                         {/* Official YouTube logo pill */}
