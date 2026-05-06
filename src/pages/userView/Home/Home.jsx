@@ -11,7 +11,12 @@ import {
   Linkedin,
   Youtube,
 } from "lucide-react";
-import HeroVideo from "../../../../public/icons/HeroVideo.mp4"
+
+//maim hero video
+// import HeroVideo from "../../../../public/icons/HeroVideo.mp4"
+
+//video with committee
+import HeroVideo from "../../../assets/MCvideo.mp4"
 import { FloatingDockHelper } from "./FloatingDock";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
