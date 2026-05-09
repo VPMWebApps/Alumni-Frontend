@@ -189,7 +189,7 @@ export const UserNavItems = [
   {
     id: "feedback",
     label: "Feedback",
-    path: "/user/Feedback",
+    path: "/user/feedback",
     type: "link",
   },
 ];

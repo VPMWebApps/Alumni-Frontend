@@ -84,8 +84,8 @@ const Footer = () => {
             </div>
 
             {/* SOCIAL */}
-            <div className="flex gap-2">
-              {socials.map((social, i) => {
+<div className="flex justify-center md:justify-start gap-2">
+                {socials.map((social, i) => {
                 const Icon = social.Icon;
                 return (
                   <motion.a
