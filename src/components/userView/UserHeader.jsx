@@ -224,7 +224,7 @@ const Navbar = () => {
                   fontSize: nameFontSize,
                 }}
               >
-                VPM'S R. Z. SHAH COLLEGE
+                VPM's R. Z. SHAH COLLEGE
               </span>
               <span
                 className="text-[#F2A20A] transition-all duration-300"
