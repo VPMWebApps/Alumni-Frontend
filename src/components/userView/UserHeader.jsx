@@ -240,13 +240,13 @@ const Navbar = () => {
 
             {/* ── College name: Desktop (≥ md) ── */}
             <div className="hidden md:flex items-center gap-4 whitespace-nowrap">
-              <span
-                className="text-[22px] lg:text-[45px] normal-case font-semibold text-[#0B1F4A] leading-tight tracking-wide"
-                style={{ fontFamily: "Philosopher" }}
-              >
-                VPM's R. Z. SHAH COLLEGE <br />
-                OF ARTS, SCIENCE & COMMERCE
-              </span>
+            <span
+  className="text-[22px] lg:text-[45px] uppercase font-semibold text-[#0B1F4A] leading-tight tracking-[0.08em]"
+  style={{ fontFamily: "Cinzel" }}
+>
+  VPM'S R. Z. SHAH COLLEGE <br />
+  OF ARTS, SCIENCE & COMMERCE
+</span>
               <span className="text-gray-300 text-7xl font-light">|</span>
               <span
                 className="text-[30px] lg:text-[45px] text-[#F2A20A]"
