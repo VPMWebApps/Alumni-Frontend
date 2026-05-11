@@ -15,3 +15,10 @@ If you are developing a production application, we recommend using TypeScript wi
 
 # Alumni-frontend
 
+Install Dev Dependencies
+
+Inside your project terminal run:
+
+npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
+
+This connects Prettier with ESLint.
