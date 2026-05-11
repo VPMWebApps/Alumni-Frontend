@@ -241,7 +241,7 @@ const Navbar = () => {
             {/* ── College name: Desktop (≥ md) ── */}
             <div className="hidden md:flex items-center gap-4 whitespace-nowrap">
             <span
-  className="text-[22px] lg:text-[45px] uppercase font-semibold text-[#0B1F4A] leading-tight tracking-[0.08em]"
+  className="text-[22px] lg:text-[45px] uppercase font-semibold text-[#0B1F4A] leading-tight "
   style={{ fontFamily: "Cinzel" }}
 >
   VPM'S R. Z. SHAH COLLEGE <br />
