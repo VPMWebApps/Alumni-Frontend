@@ -218,7 +218,7 @@ const Navbar = () => {
             {/* ── College name: Mobile + Tablet (< md) ── */}
             <div className="  flex flex-col leading-tight md:hidden  overflow-hidden">
               <span
-                className="font-black text-[#050F26]  uppercase leading-snug tracking-wide transition-all duration-300"
+                className="font-black text-[#050F26] leading-snug tracking-wide transition-all duration-300"
                 style={{
                   fontFamily: "Philosopher",
                   fontSize: nameFontSize,
