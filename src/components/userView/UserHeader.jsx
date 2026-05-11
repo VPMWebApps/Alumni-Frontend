@@ -199,7 +199,7 @@ const Navbar = () => {
         <div
           className={`
             max-w-screen-xl mx-auto flex items-center justify-between
-            transition-all duration-300 px-3 sm:px-4 md:px-6
+            transition-all duration-300 pl-3 sm:pl-4 md:pl-6 pr-2 sm:pr-2 md:pr-3
             md:h-[145px] py-3 sm:h-[100px]         `}
         >
           {/* ── LEFT: Logo + Name ── */}
