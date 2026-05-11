@@ -1,29 +1,45 @@
-name: React CI
+# Name of the workflow shown in GitHub Actions
+name: React CI/CD
 
+# When the workflow should run
 on:
   push:
-    branches: [ main, develop, "feature/**" ]
-  pull_request:
-    branches: [ main, develop ]
+    branches:
+      - main
+      - feature/**
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+
+      # Checkout repository code
+      - name: Checkout repo
         uses: actions/checkout@v4
 
+      # Setup Node.js runtime
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # Install project dependencies
       - name: Install dependencies
         run: npm install
 
-#      - name: Run ESLint
-#        run: npm run lint
+      # ESLint step (TEMPORARILY DISABLED)
+      # - name: Run ESLint
+      #   run: npm run lint
 
+      # Build the React + Vite project
       - name: Build project
         run: npm run build
+
+      # Trigger Render deployment
+      # Only runs when branch = main
+      - name: Deploy to Render
+        if: github.ref == 'refs/heads/main'
+        run: curl "$RENDER_DEPLOY_HOOK"
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
