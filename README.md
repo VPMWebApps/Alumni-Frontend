@@ -1,5 +1,7 @@
 # React + Vite
 
+Deployment URL: https://alumni-frontend-3c6l.onrender.com/user/home
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
