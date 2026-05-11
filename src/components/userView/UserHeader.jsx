@@ -349,7 +349,7 @@ const Navbar = () => {
             ) : (
               <Link
                 to="/auth/login"
-                className="relative hidden md:flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-white text-sm"
+                className="relative hidden md:flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-white text-sm ml-auto"
                 style={{ backgroundColor: "#F2A20A" }}
               >
                 <span className="absolute inset-0 rounded-xl bg-[#F2A20A] animate-ping opacity-40" />
