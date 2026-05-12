@@ -249,7 +249,7 @@ const Navbar = () => {
     textTransform: "none",
   }}
 >
-  VPM'S R. Z. SHAH COLLEGE <br />
+  VPM's R. Z. SHAH COLLEGE <br />
   OF ARTS, SCIENCE & COMMERCE
 </span>
 
