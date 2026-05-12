@@ -191,7 +191,7 @@ const Navbar = () => {
           Mobile/Tablet : sticky + shrinks on scroll
       ── */}
       <div
-  className={`bg-[#0a66c2] border-gray-100 w-full
+  className={`bg-[#0a2a66] border-gray-100 w-full
     md:static
     sticky top-0 z-50 transition-all duration-300
   `}
