@@ -243,7 +243,7 @@ const Navbar = () => {
   
   {/* College Name */}
   <span
-    className="text-[22px] lg:text-[45px] font-semibold text-[#0B1F4A] leading-tight normal-case"
+    className="text-[22px] lg:text-[45px] font-semibold text-[#0B1F4A] leading-snug text-center block"
     style={{
       fontFamily: "Cinzel",
       textTransform: "none",
