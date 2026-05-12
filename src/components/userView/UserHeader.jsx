@@ -242,16 +242,16 @@ const Navbar = () => {
            <div className="hidden md:flex items-center gap-4 whitespace-nowrap absolute left-1/2 -translate-x-1/2">
   
   {/* College Name */}
-  <span
-    className="text-[22px] lg:text-[45px] font-semibold text-[#0B1F4A] leading-snug text-center block"
-    style={{
-      fontFamily: "Cinzel",
-      textTransform: "none",
-    }}
-  >
-    VPM's R. Z. Shah College <br />
-    of Arts, Science & Commerce
-  </span>
+ <span
+  className="text-[22px] lg:text-[45px] font-semibold text-[#0B1F4A] leading-snug text-center block"
+  style={{
+    fontFamily: "Philosopher",
+    textTransform: "none",
+  }}
+>
+  VPM'S R. Z. SHAH COLLEGE <br />
+  OF ARTS, SCIENCE & COMMERCE
+</span>
 
   {/* Separator */}
   <span className="text-gray-300 text-7xl font-light">
