@@ -239,24 +239,37 @@ const Navbar = () => {
             </div>
 
             {/* ── College name: Desktop (≥ md) ── */}
-            <div className="hidden md:flex items-center gap-4 whitespace-nowrap">
-            <span
-  className="text-[22px] lg:text-[45px] normal-case font-semibold text-[#0B1F4A] leading-tight "
-  style={{ fontFamily: "Cinzel" }}
->
-  VPM'S R. Z. SHAH COLLEGE <br />
-  OF ARTS, SCIENCE & COMMERCE
-</span>
-              <span className="text-gray-300 text-7xl font-light">|</span>
-              <span
-                className="text-[30px] lg:text-[45px] text-[#F2A20A]"
-                style={{
-                  fontFamily: "Kaushan Script",
-                }}
-              >
-                alumni
-              </span>
-            </div>
+           <div className="hidden md:flex items-center gap-4 whitespace-nowrap">
+  
+  {/* College Name */}
+  <span
+    className="text-[22px] lg:text-[45px] font-semibold text-[#0B1F4A] leading-tight normal-case"
+    style={{
+      fontFamily: "Cinzel",
+      textTransform: "none",
+    }}
+  >
+    VPM's R. Z. Shah College <br />
+    of Arts, Science & Commerce
+  </span>
+
+  {/* Separator */}
+  <span className="text-gray-300 text-7xl font-light">
+    |
+  </span>
+
+  {/* Alumni Text */}
+  <span
+    className="text-[30px] lg:text-[45px] text-[#F2A20A]"
+    style={{
+      fontFamily: "Kaushan Script",
+      textTransform: "none",
+    }}
+  >
+    alumni
+  </span>
+
+</div>
           </Link>
 
           {/* ── RIGHT: icons + hamburger ── */}
