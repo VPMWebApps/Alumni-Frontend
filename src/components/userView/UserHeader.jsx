@@ -245,7 +245,7 @@ const Navbar = () => {
  <span
   className="text-[22px] lg:text-[45px] font-medium text-[#0B1F4A] leading-snug text-center block"
   style={{
-   fontFamily: "Noto Serif Hebrew",
+   fontFamily: "Gelasio",
     textTransform: "none",
   }}
 >
