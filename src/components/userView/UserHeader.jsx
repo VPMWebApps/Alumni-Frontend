@@ -243,15 +243,14 @@ const Navbar = () => {
   
   {/* College Name */}
 <span
-  className="text-[22px] lg:text-[45px] font-semibold text-white leading-snug text-center block normal-case"
+  className="text-[24px] lg:text-[45px] font-bold text-white leading-snug text-center block normal-case"
   style={{
     fontFamily: "Philosopher",
     textTransform: "none",
     textShadow: "0 1px 2px rgba(0,0,0,0.25)"
   }}
 >
-  VPM's R. Z. SHAH COLLEGE <br />
-  OF ARTS, SCIENCE & COMMERCE
+  VPM's R. Z. SHAH COLLEGE
 </span>
 
   {/* Separator */}
