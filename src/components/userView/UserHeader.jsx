@@ -239,7 +239,7 @@ const Navbar = () => {
             </div>
 
             {/* ── College name: Desktop (≥ md) ── */}
-           <div className="hidden md:flex items-center gap-4 whitespace-nowrap">
+           <div className="hidden md:flex items-center gap-4 whitespace-nowrap absolute left-1/2 -translate-x-1/2">
   
   {/* College Name */}
   <span
