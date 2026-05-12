@@ -243,7 +243,7 @@ const Navbar = () => {
   
   {/* College Name */}
 <span
-  className="text-[22px] lg:text-[45px] font-medium text-white leading-snug text-center block normal-case"
+  className="text-[22px] lg:text-[45px] font-semibold text-white leading-snug text-center block normal-case"
   style={{
     fontFamily: "Philosopher",
     textTransform: "none",
