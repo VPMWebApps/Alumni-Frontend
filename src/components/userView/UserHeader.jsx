@@ -198,7 +198,7 @@ const Navbar = () => {
       >
         <div
           className={`
-            max-w-screen-xl mx-auto flex items-center justify-between
+            max-w-screen-xl mx-auto flex items-center justify-between relative
             transition-all duration-300 pl-3 sm:pl-4 md:pl-6 pr-2 sm:pr-2 md:pr-3
             md:h-[145px] py-3 sm:h-[100px]         `}
         >
