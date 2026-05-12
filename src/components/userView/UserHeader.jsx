@@ -191,11 +191,11 @@ const Navbar = () => {
           Mobile/Tablet : sticky + shrinks on scroll
       ── */}
       <div
-        className={`bg-white border-gray-100 w-full
-          md:static
-          sticky top-0 z-50 transition-all duration-300
-        `}
-      >
+  className={`bg-[#B9D9EB] border-gray-100 w-full
+    md:static
+    sticky top-0 z-50 transition-all duration-300
+  `}
+>
         <div
           className={`
             max-w-screen-xl mx-auto flex items-center justify-between relative
@@ -242,11 +242,17 @@ const Navbar = () => {
            <div className="hidden md:flex items-center gap-4 whitespace-nowrap absolute left-1/2 -translate-x-1/2">
   
   {/* College Name */}
- <span
-  className="text-[22px] lg:text-[45px] font-medium text-[#0B1F4A] leading-snug text-center block normal-case"
+<span
+  className="text-[22px] lg:text-[45px] font-medium text-white leading-snug text-center block normal-case"
   style={{
-   fontFamily: "Gelasio",
+    fontFamily: "Gelasio",
     textTransform: "none",
+    textShadow: `
+      0 0 5px rgba(255,255,255,0.9),
+      0 0 10px rgba(255,255,255,0.7),
+      0 0 20px rgba(59,130,246,0.8),
+      0 0 40px rgba(59,130,246,0.6)
+    `
   }}
 >
   VPM's R. Z. SHAH COLLEGE <br />
