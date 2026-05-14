@@ -23,6 +23,7 @@ import {
 import { disconnectSocket } from "../../../socket/socket";
 import vpmLogo from "../../assets/VpmLogo.png";
 import naacLogo from "../../assets/naac_logo.webp";
+import headerBg from "../../assets/header_image.jpb";
 import {
   Sheet,
   SheetContent,
@@ -191,10 +192,11 @@ const Navbar = () => {
           Mobile/Tablet : sticky + shrinks on scroll
       ── */}
       <div
-  className={`bg-[#0a2a66] border-gray-100 w-full
-    md:static
-    sticky top-0 z-50 transition-all duration-300
-  `}
+  className="border-gray-100 w-full md:static sticky top-0 z-50 transition-all duration-300 bg-cover bg-center relative"
+  style={{
+    backgroundImage: `url(${headerBg})`,
+  }}
+>
 >
         <div
           className={`
