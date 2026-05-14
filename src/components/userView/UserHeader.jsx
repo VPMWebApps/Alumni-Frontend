@@ -23,7 +23,7 @@ import {
 import { disconnectSocket } from "../../../socket/socket";
 import vpmLogo from "../../assets/VpmLogo.png";
 import naacLogo from "../../assets/naac_logo.webp";
-import headerBg from "../../assets/header_image.jpb";
+import headerBg from "../../assets/header_image.jpg";
 import {
   Sheet,
   SheetContent,
